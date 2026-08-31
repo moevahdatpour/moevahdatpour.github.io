@@ -344,6 +344,13 @@ button {
   padding-inline: 0.1em;
   margin-inline: -0.1em;
 }
+.hero__alternate {
+  font-size: 0.32em;
+  font-weight: 400;
+  opacity: 0.65;
+  margin-left: 0.15em;
+  vertical-align: middle;
+}
 .hero__name .line > span { display: block; }
 
 /* Role line — smaller than the name, set in the mono face like a caption. */
@@ -1333,6 +1340,11 @@ button {
   text-transform: uppercase;
   letter-spacing: var(--hero-track);
   line-height: 1.2;
+}
+.r-name__alternate {
+  font-size: 0.5em;
+  opacity: 0.65;
+  font-weight: 400;
 }
 .r-role { color: var(--text-2); margin-top: var(--s-3); }
 .r-contact { margin-top: var(--s-3); font-size: var(--t-sm); color: var(--text-2); }
