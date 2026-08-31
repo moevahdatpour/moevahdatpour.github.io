@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moe Vahdatpour — AI/ML Engineer</title>
+
+<meta name="description" content="Moe Vahdatpour — AI/ML Engineer in Atlanta, GA. Computer vision, large language models, and energy efficient machine learning.">
+<meta name="author" content="Moe Vahdatpour">
+<meta name="theme-color" content="#14131a">
+<link rel="canonical" href="https://moevahdatpour.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Moe Vahdatpour — AI/ML Engineer">
+<meta property="og:description" content="Computer vision, large language models, and energy efficient machine learning.">
+<meta property="og:url" content="https://moevahdatpour.github.io/">
+<meta property="og:image" content="https://moevahdatpour.github.io/images/ogmsv.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314131a'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%238c7bff'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%238c7bff' stroke-opacity='.45'/%3E%3C/svg%3E">
+
+<!-- Syncopate (hero display) + Outfit + IBM Plex Mono from Google; Satoshi from Fontshare.
+     To use a licensed display font instead, see the swap note at the top of css/styles.css. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Outfit:wght@200..600&amp;family=Syncopate:wght@400;700&amp;display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap">
+<link rel="stylesheet" href="css/styles.css?v=7">
+
+<script>document.documentElement.className = "js";</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══ Top bar ═══════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="shell nav__inner">
+    <a class="nav__mark" href="#top" aria-label="Back to top">
+      <b>Moe Vahdatpour</b><span>AI/ML Engineer</span>
+    </a>
+    <div class="nav__actions">
+      <a class="btn btn--sm btn--primary" href="resume.html">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>
+        Resume
+      </a>
+      <a class="btn btn--sm" href="https://www.linkedin.com/in/msvahdatpour/" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3" />
+        </svg>
+        LinkedIn
+      </a>
+      <a class="btn btn--sm" href="https://scholar.google.com/citations?user=lhLLrosAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 4 2 9l10 5 10-5-10-5Z" />
+          <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5" />
+        </svg>
+        Scholar
+      </a>
+    </div>
+  </div>
+  <div class="nav__progress" id="nav-progress" aria-hidden="true"></div>
+</header>
+
+<!-- ═══ Section dock ══════════════════════════════════════════════════════ -->
+<nav class="dock" id="dock" aria-label="Sections">
+  <a class="dock__link" href="#experience"   data-nav="experience">Experience</a>
+  <a class="dock__link" href="#projects"     data-nav="projects">Projects</a>
+  <a class="dock__link" href="#publications" data-nav="publications">Publications</a>
+  <a class="dock__link" href="#about"        data-nav="about">About</a>
+</nav>
+
+<main id="main">
+
+<!-- ═══ Hero ══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
+  <div class="shell hero__inner">
+
+    <div class="hero__intro">
+      <h1 class="hero__name">
+        <span class="line"><span style="--i:0">Moe</span></span>
+        <span class="line"><span style="--i:1">Vahdatpour</span></span>
+      </h1>
+
+      <p class="hero__role rise" style="--i:3">
+        AI/ML Engineer <span class="sep" aria-hidden="true">·</span>
+        Computer Vision <span class="sep" aria-hidden="true">·</span>
+        Environmental AI
+      </p>
+
+      <p class="hero__bio rise" style="--i:4">
+        I work on computer vision, large language models, and the problem of
+        making them cheaper to run.
+      </p>
+
+      <p class="hero__bio rise" style="--i:4">
+        PhD Candidate in Computer Science at Georgia State University, with an MSc in Computer Science from the University of Tehran.
+      </p>
+
+      <p class="hero__where rise" style="--i:5">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.686 7-11a7 7 0 1 0-14 0c0 5.314 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Atlanta, GA
+      </p>
+    </div>
+
+    <div class="hero__portrait">
+      <div class="hero__frame js-img">
+        <img src="images/hero.jpg" alt="Portrait of Moe Vahdatpour" width="1000" height="1250">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ Experience ════════════════════════════════════════════════════════ -->
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="shell">
+    <div class="section__head">
+      <h2 class="section__title" id="experience-title">Experience</h2>
+      <p class="section__meta mono">2015 — present</p>
+    </div>
+
+    <div class="exp" data-stagger>
+
+      <!-- Tressed Inc. -->
+      <button type="button" class="exp__row reveal" data-modal="exp-tressed"
+              aria-label="Machine Learning Engineer Intern at Tressed Inc., May to August 2025 — open details">
+        <span class="exp__meta-col">
+          <span class="exp__years">2025</span>
+          <span class="exp__logo js-img js-img--thumb"><img src="images/logos/tressed.png" alt="Tressed Inc. logo" loading="lazy" decoding="async" width="120" height="120"></span>
+        </span>
+        <span class="exp__body">
+          <span class="exp__role">Machine Learning Engineer Intern</span>
+          <span class="exp__org">Tressed Inc.<span class="dot" aria-hidden="true">·</span><span class="mono">Remote</span></span>
+          <span class="exp__blurb">I built real time AI systems that make virtual hair feel natural, combining computer vision, hair simulation, and mobile AR in a production app.</span>
+        </span>
+        <span class="exp__open">Details
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+
+      <!-- Georgia State University -->
+      <button type="button" class="exp__row reveal" data-modal="exp-gsu"
+              aria-label="Graduate Research Assistant at Georgia State University, 2023 to present — open details">
+        <span class="exp__meta-col">
+          <span class="exp__years">2023 — Present</span>
+          <span class="exp__logo js-img js-img--thumb"><img src="images/logos/gsu.png" alt="Georgia State University logo" loading="lazy" decoding="async" width="120" height="120"></span>
+        </span>
+        <span class="exp__body">
+          <span class="exp__role">Graduate Research Assistant</span>
+          <span class="exp__org">Georgia State University<span class="dot" aria-hidden="true">·</span><span class="mono">Atlanta, GA</span></span>
+          <span class="exp__blurb">I research how to make increasingly capable AI systems faster, more efficient, and scalable, from LLM optimization to hardware software codesign.</span>
+        </span>
+        <span class="exp__open">Details
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+
+      <!-- Sequence Content Co. -->
+      <button type="button" class="exp__row reveal" data-modal="exp-sequence"
+              aria-label="Founder at Sequence Content Co., 2018 to 2022 — open details">
+        <span class="exp__meta-col">
+          <span class="exp__years">2018 — 22</span>
+          <span class="exp__logo js-img js-img--thumb"><img src="images/logos/sequence.png" alt="Sequence Content Co. logo" loading="lazy" decoding="async" width="120" height="120"></span>
+        </span>
+        <span class="exp__body">
+          <span class="exp__role">Founder</span>
+          <span class="exp__org">Sequence Content Co.<span class="dot" aria-hidden="true">·</span><span class="mono">Isfahan</span></span>
+          <span class="exp__blurb">Founded and scaled a company building AI driven systems that turned real time customer behavior into personalized experiences across physical and digital environments.</span>
+        </span>
+        <span class="exp__open">Details
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+
+      <!-- University of Tehran -->
+      <button type="button" class="exp__row reveal" data-modal="exp-tehran"
+              aria-label="Research Assistant at University of Tehran, 2015 to 2018 — open details">
+        <span class="exp__meta-col">
+          <span class="exp__years">2015 — 18</span>
+          <span class="exp__logo js-img js-img--thumb"><img src="images/logos/tehran.png" alt="University of Tehran logo" loading="lazy" decoding="async" width="120" height="120"></span>
+        </span>
+        <span class="exp__body">
+          <span class="exp__role">Research Assistant</span>
+          <span class="exp__org">University of Tehran<span class="dot" aria-hidden="true">·</span><span class="mono">Tehran</span></span>
+          <span class="exp__blurb">Explored how brain inspired computation could make visual intelligence more efficient, building spiking neural networks for real time motion perception alongside early work in visual air quality estimation.</span>
+        </span>
+        <span class="exp__open">Details
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+
+    </div>
+  </div>
+</section>
+<!-- Experience modal copy. Edit freely — each block fills the pop-up. -->
+<template data-detail="exp-gsu"
+       data-eyebrow="2023 — Present · Atlanta, GA"
+       data-title="Graduate Research Assistant — Georgia State University">
+
+  <div>
+    <div class="beat">
+      <h4 class="beat__label mono">The problem</h4>
+      <p class="beat__text">As AI models scale, keeping them up to date becomes increasingly expensive. Full retraining repeatedly spends computation on knowledge a model has already learned, making continual adaptation costly in both time and energy.</p>
+    </div>
+
+<div class="beat">
+  <h4 class="beat__label mono">What I work on</h4>
+  <p class="beat__text">I research efficient adaptation of LLMs and agentic systems, spanning model optimization and hardware software codesign. In one project, we designed a two tier Compound LLM architecture that separates reusable feature extraction from adaptive decision making. The lower layer uses FPGA based direct equation solving to optimize parameters in a single step, while the upper layer uses incremental learning to update only what changes as new data arrives.</p>
+</div>
+
+<div class="beat">
+  <h4 class="beat__label mono">The result</h4>
+  <p class="beat__text">The combined approach achieved up to 1.6× faster model adaptation while reducing energy consumption by 4.7%, demonstrating a more resource efficient approach to continual LLM learning with potential for edge and other energy constrained environments. This research has contributed to peer reviewed work at ASPLOS, IJCNN, and ICCV workshops.</p>
+</div>
+
+  </div>
+  <ul class="tags"><li>LLMs</li><li>Agentic AI</li><li>Incremental Learning</li><li>FPGA</li><li>HW/SW Codesign</li></ul>
+</template>
+
+
+
+<template data-detail="exp-tressed" data-eyebrow="May — Aug 2025 · Remote"
+  data-title="Machine Learning Engineer Intern — Tressed Inc.">
+  <!-- <figure class="modal__figure js-img">
+    <img src="images/Experience/Tressed.png" alt="Sky images paired with predicted air-quality levels">
+  </figure> -->
+  <div>
+    <div class="beat">
+      <h4 class="beat__label mono">The problem</h4>
+      <p class="beat__text">Virtual hair try on breaks down when it has to run live. Faces move, lighting shifts, and even
+        small inconsistencies in tracking or rendering can make the result look artificial.</p>
+    </div>
+
+    <div class="beat">
+      <h4 class="beat__label mono">What I did</h4>
+      <p class="beat__text">Led the ML team in building an AI driven computer vision pipeline end to end, combining facial and
+        hair analysis with a photorealistic simulation layer for live AR rendering. I worked across the ML stack while also
+        supporting technical direction as CTO, focusing on maintaining visual quality within a mobile performance budget.</p>
+    </div>
+
+    <div class="beat">
+      <h4 class="beat__label mono">The result</h4>
+      <p class="beat__text">Delivered a production ready virtual try on experience running at 30 FPS, with 35 ms frame latency
+        and an 18% reduction in inference time, enabling responsive and natural looking hair simulation directly on live
+        camera feeds.</p>
+    </div>
+
+  </div>
+
+  <p class="modal__note">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+      stroke-linejoin="round" aria-hidden="true">
+      <rect x="4" y="10" width="16" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </svg>
+    Details under NDA.
+  </p>
+
+  <ul class="tags">
+    <li>Computer Vision</li>
+    <li>Real time AR</li>
+    <li>ML Engineering</li>
+    <li>Technical Leadership</li>
+  </ul>
+</template>
+
+
+<template data-detail="exp-sequence"
+       data-eyebrow="2018 — 2022 · Isfahan"
+       data-title="Founder — Sequence Content Co.">
+
+  <div>
+    <div class="beat">
+      <h4 class="beat__label mono">The problem</h4>
+      <p class="beat__text">Most personalization systems learn from what customers did yesterday. I wanted to explore what becomes possible when AI can understand what is happening right now, turning live customer behavior into signals that could immediately shape the experience.</p>
+    </div>
+
+<div class="beat">
+  <h4 class="beat__label mono">What I did</h4>
+  <p class="beat__text">Founded and led the company, building an end to end real time ML system that combined computer vision, streaming data, and recommendation logic. Cameras captured live customer interactions while vision models analyzed facial expressions, body pose, and behavioral signals to infer group context. I led the technical direction and delivered deployments across cinema, restaurant, and other B2C environments, where recommendations could adapt continuously to live customer behavior.</p>
+</div>
+
+<div class="beat">
+  <h4 class="beat__label mono">The result</h4>
+  <p class="beat__text">Delivered solutions for +79 clients over four years, with deployments contributing to up to 19% higher sales and a 0.5 point increase in customer satisfaction on a 5 point scale. The work demonstrated how low latency behavioral inference could turn streaming customer data into continuously adaptive recommendations.</p>
+</div>
+
+  </div>
+  <ul class="tags"><li>Computer Vision</li><li>Real time ML</li><li>Behavioral AI</li><li>Streaming Systems</li><li>Personalization</li></ul>
+</template>
+
+
+<template data-detail="exp-tehran"
+       data-eyebrow="2015 — 2018 · Tehran"
+       data-title="Research Assistant — University of Tehran">
+
+  <div>
+    <div class="beat">
+      <h4 class="beat__label mono">The work</h4>
+      <p class="beat__text">My research focused on computational vision, with a particular interest in how biological systems process visual information over time. I worked across spiking neural networks, image processing, air quality estimation, and visual recognition problems.</p>
+    </div>
+
+<div class="beat">
+  <h4 class="beat__label mono">What I did</h4>
+  <p class="beat__text">For my master's thesis, I built a multi layer Spiking Neural Network inspired by the primate visual system and the MT area, using synaptic delays to encode motion direction and speed. The model combined Leaky Integrate and Fire neurons, STDP, and reinforcement learning, progressing from a 7×7 direction selective neural grid to a Spiking Motion Detector with shared weights and delays. I extracted temporal spike representations and used them to classify 1,880 signatures from the SUSIG dataset, where Random Forest detected 98.4% of forgery signatures.</p>
+  <p class="beat__text">Alongside the thesis, I initiated an air quality image dataset by collecting and labeling sky photographs and built shallow and deep neural network models to estimate pollution levels from visual features. I also applied computer vision techniques to a national pose detection competition, where our team placed 2nd.</p>
+</div>
+
+<div class="beat">
+  <h4 class="beat__label mono">Where it led</h4>
+  <p class="beat__text">The work became the foundation for my continued research in computer vision and multimodal AI, including later research on air quality forecasting from images and vision language models.</p>
+</div>
+
+  </div>
+  <ul class="tags"><li>Spiking Neural Networks</li><li>Neuromorphic Vision</li><li>Computer Vision</li><li>Temporal Learning</li><li>Air Quality Modeling</li></ul>
+</template>
+
+
+
+<!-- ═══ Projects ══════════════════════════════════════════════════════════ -->
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="shell">
+    <div class="section__head">
+      <h2 class="section__title" id="projects-title">Projects</h2>
+    </div>
+
+    <!-- data-filter must match a card's data-groups token; counts fill in automatically -->
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" class="filter" data-filter="all"     aria-pressed="true">All<em></em></button>
+      <button type="button" class="filter" data-filter="vision"  aria-pressed="false">Vision<em></em></button>
+      <button type="button" class="filter" data-filter="llm"     aria-pressed="false">LLM &amp; Agents<em></em></button>
+      <button type="button" class="filter" data-filter="systems" aria-pressed="false">Systems<em></em></button>
+      <button type="button" class="filter" data-filter="paper"   aria-pressed="false">Peer-reviewed<em></em></button>
+    </div>
+
+    <p class="sr-only" id="proj-live" role="status" aria-live="polite"></p>
+
+    <div class="grid" id="proj-grid" data-stagger>
+
+      <button type="button" class="card reveal" data-modal="proj-air" data-groups="vision llm paper"
+              aria-label="LLM-Guided Air Pollution Forecasting — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/llm-air-quality.png" alt="Sky images paired with predicted air-quality levels" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--paper">ICCVW 2025</span><span class="badge badge--paper">Springer 2018</span></span>
+          <span class="card__title">LLM Guided Air Pollution Forecasting
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">Forecasting air quality from ordinary sky photographs with vision language models, then running the process backward to visualize what the sky could look like at different pollution levels.</span>
+          <span class="tags"><span>Computer Vision</span><span>Vision Language Models</span><span>Generative AI</span><span>Multimodal Forecasting</span><span>Diffusion Models</span></span>
+        </span>
+      </button>
+
+      <button type="button" class="card reveal" data-modal="proj-agentic" data-groups="llm systems paper"
+              aria-label="Agent-Based AI for Sustainable LLMs — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/agentic-sustainable-llms.png" alt="Diagram of an agentic framework over FPGA-accelerated learning" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--paper">ASPLOSW 2026</span><span class="badge badge--paper">IJCNN 2025</span></span>
+          <span class="card__title">Agent Based AI for Sustainable LLMs
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">An agentic framework for scalable, energy efficient LLMs, built on FPGA accelerated incremental learning.</span>
+          <span class="tags"><span>Agentic AI</span><span>FPGA</span><span>Incremental Learning</span><span>Energy Efficient AI</span></span>
+        </span>
+      </button>
+
+      <button type="button" class="card reveal" data-modal="proj-snn" data-groups="vision paper"
+              aria-label="Latency-Based Motion Detection in Spiking Neural Networks — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/snn-motion-detection.png" alt="Spiking neuron lattice showing a propagating motion wavefront" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--paper">Computational Vision 2024</span><span class="badge badge--paper">Best Presentation</span></span>
+          <span class="card__title">Latency Based Motion Detection in Spiking Neural Networks
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">A brain inspired spiking model that detects motion through spike timing and synaptic delays, turning temporal signals into real time visual features.</span>
+          <span class="tags"><span>Spiking Neural Networks</span><span>Neuromorphic</span><span>Motion Perception</span><span>Temporal Coding</span></span>
+        </span>
+      </button>
+
+      <button type="button" class="card reveal" data-modal="proj-mosquito" data-groups="vision"
+              aria-label="Mosquito Alert, AI for Environmental Surveillance — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/mosquito-alert.png" alt="Detection boxes over mosquito specimens in a monitoring trap" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--year">2023</span></span>
+          <span class="card__title">Mosquito Alert: AI for Environmental Surveillance
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">Automated mosquito detection and species classification from rea -world smartphone images, designed to scale vector surveillance with computer vision.</span>
+          <span class="tags"><span>Object Detection</span><span>Fast R-CNN</span><span>Fine Grained Classification</span><span>Computer Vision</span></span>
+        </span>
+      </button>
+
+      <button type="button" class="card reveal" data-modal="proj-cx" data-groups="systems"
+              aria-label="Real-Time Customer Experience ML — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/realtime-cx-ml.jpg" alt="Streaming event pipeline feeding a personalization model" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--year">2020</span></span>
+          <span class="card__title">Real Time Behavioral Intelligence &amp; Personalization
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">A real time computer vision and ML system that turned live customer behavior into context aware recommendations and experiences.</span>
+          <span class="tags"><span>Real Time Inference</span><span>Context Aware Recommendation</span><span>Streaming ML</span><span>Computer Vision</span></span>
+        </span>
+      </button>
+
+      <button type="button" class="card reveal" data-modal="proj-cancer" data-groups="paper"
+              aria-label="Breast Cancer Diagnosis via GA-Optimized MLP — open details">
+        <span class="card__media js-img">
+          <img src="images/projects/breast-cancer-mlp.png" alt="Genetic-algorithm search over neural network configurations" loading="lazy" decoding="async" width="1440" height="900">
+        </span>
+        <span class="card__body">
+          <span class="badges"><span class="badge badge--paper">Springer 2024</span></span>
+          <span class="card__title">Genetic Algorithm Optimized MLP for Breast Cancer Diagnosis
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <span class="card__blurb">A genetic algorithm optimized a multilayer perceptron’s architecture and learning parameters for breast cancer classification, improving predictive accuracy over a conventionally configured baseline.</span>
+          <span class="tags"><span>Genetic Algorithms</span><span>Multilayer Perceptron</span><span>Evolutionary Optimization</span><span>Medical Classification</span></span>
+        </span>
+      </button>
+
+      <p class="grid__empty" id="proj-empty" hidden>No projects in this view.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Project modal copy. Swap the paper links for real DOIs when you have them. -->
+<template data-detail="proj-air" data-eyebrow="ICCVW 2025 · Springer 2018" data-title="LLM Guided Air Pollution Forecasting">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/llm-air-quality.jpg" alt="Sky images paired with predicted air-quality levels">
+  </figure>
+
+  <div>
+    <p class="beat__text">Air quality sensors are accurate but expensive and limited in coverage. I built a visual forecasting pipeline that estimates pollution from +5,000 sky images across +10 urban regions, using machine learning and CNNs to classify five EPA AQI categories.</p>
+
+    <p class="beat__text">The system also uses BLIP-2 and diffusion models to visualize different pollution scenarios. The best CNN achieved 89.4% accuracy, while generated images matched their intended categories 89.6% of the time.</p>
+
+    <p class="beat__text">In a study with 12 participants, visual counterfactuals improved interpretability from 3.5 to 4.3 out of 5, showing how multimodal AI can predict, explain, and visualize air quality.</p>
+  </div>
+
+  <ul class="tags">
+    <li>Computer Vision</li>
+    <li>Vision Language Models</li>
+    <li>Generative AI</li>
+    <li>Multimodal Forecasting</li>
+    <li>Diffusion Models</li>
+  </ul>
+
+  <div class="modal__actions">
+    <a class="btn" data-paper href="https://ieeexplore.ieee.org/abstract/document/11375459" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 4 2 9l10 5 10-5-10-5Z"/>
+        <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>
+      </svg>
+      ICCVW 2025 Paper
+    </a>
+
+    <a class="btn" data-paper href="https://link.springer.com/article/10.1007/s12145-018-0334-x" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 4 2 9l10 5 10-5-10-5Z"/>
+        <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>
+      </svg>
+      Springer 2018 Paper
+    </a>
+  </div>
+</template>
+
+<template data-detail="proj-agentic" data-eyebrow="ASPLOSW 2026 · IJCNN 2025 " data-title="Agent Based AI for Sustainable LLMs">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/agentic-sustainable-llms.jpg" alt="Diagram of an agentic framework over FPGA-accelerated learning">
+  </figure>
+  <div>
+    <p class="beat__text">As AI models scale, so does the cost of keeping them up to date. Full retraining repeatedly spends computation on knowledge the model has already learned. We explored how to make model adaptation more efficient without sacrificing its ability to learn from new data.</p>
+
+<p class="beat__text">We designed a <strong>two tier Compound LLM architecture</strong> that separates reusable feature extraction from adaptive decision making. The lower layer uses FPGA-based direct equation solving to optimize parameters in a single step, while the upper layer uses incremental learning to update only what changes as new data arrives.</p>
+
+<p class="beat__text">By combining these two learning strategies, the framework achieved up to <strong>1.6× faster adaptation</strong> while reducing energy consumption by <strong>4.7%</strong>. The result is a more resource efficient approach to continual LLM learning, with a design suited to edge and other energy constrained environments.</p>
+  </div>
+  <ul class="tags"><li>Agentic AI</li><li>FPGA</li><li>Incremental Learning</li><li>Energy Efficient AI</li></ul>
+  <a class="btn" data-paper href="https://arxiv.org/abs/2603.23668" target="_blank" rel="noopener">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+    ASPLOSW 2026 paper
+  </a>
+  <a class="btn" data-paper href="https://ieeexplore.ieee.org/abstract/document/11228495" target="_blank" rel="noopener">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+    IJCNN 2025 paper
+  </a>
+</template>
+
+<template data-detail="proj-snn" data-eyebrow="International Conference on Computational Vision · 2024 · Best Presentation" data-title="Latency Based Motion Detection in Spiking Neural Networks">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/snn-motion-detection1.png" alt="Spiking neuron lattice showing a propagating motion wavefront">
+  </figure>
+  <div>
+    <p class="beat__text">Instead of treating vision as a sequence of frames, we looked at how the brain may encode motion
+      through <strong>when neurons fire</strong>. Inspired by the primate visual system and the MT area, we built a
+      multi-layer Spiking Neural Network (SNN) where synaptic delays encode the direction and speed of movement.</p>
+  
+    <p class="beat__text">We developed the model in two phases: first, training direction-selective neurons on a
+      <strong>7×7 neural grid</strong>, then expanding them into a Spiking Motion Detector (SMD) with shared weights and
+      delays. Combining Leaky Integrate and Fire neurons, Spike Timing Dependent Plasticity (STDP), and reinforcement
+      learning allowed the network to learn motion patterns directly from temporal spike activity.</p>
+  
+    <p class="beat__text">We then tested the learned motion representations on <strong>1,880 signatures</strong> from the
+      SUSIG dataset, using the resulting spike patterns as features for signature classification. The system detected
+      <strong>98.4% of forgery signatures</strong> with Random Forest, demonstrating how biologically inspired temporal
+      processing can translate into a practical computer-vision and authentication task.</p>
+  </div>
+  <ul class="tags"><li>Spiking Neural Networks</li><li>Neuromorphic</li><li>Motion Perception</li><li>Temporal Coding</li></ul>
+  <a class="btn" data-paper href="https://publications.waset.org/10013561/latency-based-motion-detection-in-spiking-neural-networks" target="_blank" rel="noopener">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+    Computational Vision 2024 paper
+  </a>
+</template>
+
+<template data-detail="proj-mosquito" data-eyebrow="2023" data-title="Mosquito Alert: AI for Environmental Surveillance">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/mosquito-alert1.png" alt="Detection boxes over mosquito specimens in a monitoring trap">
+  </figure>
+  <div>
+    <p class="beat__text">Mosquito surveillance depends heavily on experts manually identifying specimens, while
+      public health teams increasingly receive images from the field. We worked on automating that process so a single
+      image could be turned into both a mosquito location and a species prediction making large scale surveillance more
+      practical.</p>
+  
+    <p class="beat__text">We built a two-stage computer vision pipeline: <strong>Fast R-CNN</strong> first detects and
+      crops the mosquito, then a CNN classifies it across <strong>6 mosquito species</strong>. Working with <strong>10,357
+        real-world smartphone images</strong>, we addressed severe class imbalance through targeted augmentation,
+      including flips, crops, blur, contrast, brightness, and rotation, followed by 5 fold cross validation.</p>
+  
+    <p class="beat__text">The customized Fast R-CNN achieved an <strong>IoU of 0.89</strong> for mosquito localization,
+      while augmentation improved CNN classification from <strong>61.2% to 76.4% F1 score</strong>. The final classifier
+      processed an image in <strong>0.13 seconds</strong>, showing how a carefully designed detection and classification
+      pipeline can turn crowdsourced imagery into scalable environmental surveillance data.</p>
+  </div>
+  <ul class="tags"><li>Object Detection</li><li>Fast R-CNN</li><li>Fine Grained Classification</li><li>Computer Vision</li></ul>
+</template>
+
+<template data-detail="proj-cx" data-eyebrow="2020" data-title="Real Time Behavioral Intelligence &amp; Personalization">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/realtime-cx-ml.jpg" alt="Streaming event pipeline feeding a personalization model">
+  </figure>
+  <div>
+    <p class="beat__text">Most personalization systems learn from what customers did yesterday. We explored what becomes
+      possible when AI can understand what is happening <strong>right now</strong>. Cameras captured live customer
+      interactions, while computer vision models analyzed facial expressions, body pose, and behavioral signals to infer
+      the group’s immediate context.</p>
+  
+    <p class="beat__text">We built a real-time ML pipeline that transformed these signals into actionable recommendations.
+      In a cinema, aggregated audience sentiment could influence which pre-show advertisements or messages were surfaced;
+      in restaurants, behavioral data could be passed to servers to support more context-aware recommendations. The system
+      connected <strong>computer vision, streaming data, real-time inference, and recommendation logic</strong> into a
+      continuous feedback loop.</p>
+  
+    <p class="beat__text">Across the environments where the system was deployed, the approach contributed to measurable
+      improvements, including up to <strong>19% higher sales</strong> and a <strong>0.5 point increase in customer
+        satisfaction</strong> on a 5 point scale. By combining behavioral inference with low latency recommendation, the
+      system demonstrated how <strong>streaming ML can continuously adapt predictions and recommendations to live customer
+        context</strong>.</p>
+  </div>
+  <ul class="tags"><li>Real time Inference</li><li>Context Aware Recommendation</li><li>Streaming ML</li><li>Computer Vision</li></ul>
+</template>
+
+<template data-detail="proj-cancer" data-eyebrow="Springer 2024" data-title="Genetic Algorithm Optimized MLP for Breast Cancer Diagnosis">
+  <figure class="modal__figure js-img">
+    <img src="images/projects/breast-cancer-mlp.png" alt="Genetic-algorithm search over neural network configurations">
+  </figure>
+  <div>
+    <p class="beat__text">The core challenge was treating neural-network configuration as an optimization problem rather
+      than a manual tuning task. A feedforward multilayer perceptron was trained on the Breast Cancer Wisconsin Diagnostic
+      dataset, using 30 numerical features to classify tumors as benign or malignant.</p>
+  
+    <p class="beat__text">A genetic algorithm operated over candidate MLP configurations, encoding parameters such as
+      hidden-neuron count and learning rate as chromosomes. Each candidate was evaluated through a fitness function based
+      on classification accuracy, after which selection, crossover, and mutation generated successive populations. Across
+      30 generations, the evolutionary search converged toward higher performing configurations, reaching a peak accuracy
+      of 0.9912 compared with 0.973 for the best evaluated conventional MLP configuration.</p>
+  </div>
+  <ul class="tags"><li>Genetic Algorithms</li><li>Multilayer Perception</li><li>Evolutionary Optimization</li><li>Medical Classification</li></ul>
+  <a class="btn" data-paper href="https://link.springer.com/article/10.1007/s41939-024-00487-3" target="_blank" rel="noopener">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+    Springer 2024 paper
+  </a>
+</template>
+
+<!-- ═══ Publications ══════════════════════════════════════════════════════ -->
+<section class="section" id="publications" aria-labelledby="publications-title">
+  <div class="shell">
+    <div class="section__head">
+      <h2 class="section__title" id="publications-title">Publications</h2>
+      <p class="section__meta mono" id="pub-meta"></p>
+    </div>
+
+    <!-- Each href goes to the paper. Replace the Scholar link with a DOI when you have one. -->
+    <ul class="pubs" data-stagger>
+      <li class="reveal"><a class="pub" href="https://arxiv.org/abs/2603.23668" target="_blank" rel="noopener">
+        <span class="pub__title">Energy-Efficient Software–Hardware Co-Design for Machine Learning: From TinyML to LLMs</span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Yanqing Zhang</span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>ASPLOSW</b> 2026</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://ieeexplore.ieee.org/abstract/document/11375459" target="_blank" rel="noopener">
+        <span class="pub__title">Forecasting and Visualizing Air Quality from Sky Images with Vision–Language Models</span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Maryam Eyvazi, Yanqing Zhang</span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>ICCVW</b> 2025</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://ieeexplore.ieee.org/abstract/document/11228495" target="_blank" rel="noopener">
+        <span class="pub__title">The Energy-Efficient Hierarchical Neural Network with Fast FPGA-Based Incremental Learning</span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Huaiyuan Chu, Yanqing Zhang</span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>IJCNN</b> 2025</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://link.springer.com/article/10.1007/s41939-024-00487-3" target="_blank" rel="noopener">
+        <span class="pub__title">Enhancing Breast Cancer Diagnosis via Genetic-Algorithm-Optimized MLP</span>
+        <span class="pub__authors">Hossein Talebzadeh, Mohammad Talebzadeh, Maryam Satarpour, Fereshtehsadat Jalali, Bahar Farhadi, <b>Mohammad Saleh Vahdatpour</b></span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>Springer</b> 2024</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://publications.waset.org/10013561/latency-based-motion-detection-in-spiking-neural-networks" target="_blank" rel="noopener">
+        <span class="pub__title">Latency-Based Motion Detection in Spiking Neural Networks<span class="pub__award">Best Presentation</span></span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Yanqing Zhang</span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>Computational Vision</b> 2024</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://ui.adsabs.harvard.edu/abs/2024arXiv240103324S/abstract" target="_blank" rel="noopener">
+        <span class="pub__title">Addressing the Knapsack Challenge Through Cultural Algorithm Optimization</span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b></span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>ARIA</b> 2023</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+
+      <li class="reveal"><a class="pub" href="https://link.springer.com/article/10.1007/s12145-018-0334-x" target="_blank" rel="noopener">
+        <span class="pub__title">Air Pollution Forecasting from Sky Images with Shallow and Deep Classifiers</span>
+        <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Hedieh Sajedi, Farzad Ramezani</span>
+          <span class="pub__leader" aria-hidden="true"></span>
+        <span class="pub__venue"><b>Springer</b> 2018</span>
+        <span class="pub__go" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a></li>
+    </ul>
+
+    <div class="pubs__out">
+      <a class="btn" href="https://scholar.google.com/citations?user=lhLLrosAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+        All papers on Scholar
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ About ═════════════════════════════════════════════════════════════ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="shell">
+    <div class="section__head">
+      <h2 class="section__title" id="about-title">About</h2>
+    </div>
+
+    <div class="about">
+      <div class="about__grid">
+        <div class="about__prose reveal">
+          <p><strong>My journey into AI started with a PC, a curious six-year-old, and a lot of questions.</strong></p>
+          <p>That curiosity took me from programming and <strong>algorithms</strong> to <strong>AI, machine learning, computer vision, and LLMs</strong>. Along the way, I’ve worked on everything from predicting air quality from sky images to making AI systems more <strong>efficient and scalable</strong>.</p>
+          <p>Today, I’m an <strong>AI/ML Engineer</strong> driven by the same question that started it all: <strong>How can we make technology work better?</strong></p>
+          
+          <div class="mt-2">
+            <button type="button" class="btn btn--inline js-toggle-story" aria-expanded="false" aria-controls="about-story">
+              <span class="btn__text">See More →</span>
+            </button>
+          </div>
+
+          <div id="about-story" class="about__expanded" hidden>
+            <div class="story">
+              <p>I was six when I started sitting beside my brother while he configured PCs. I barely understood what he was doing, but I was fascinated by the idea that a machine could be taken apart, rebuilt, and made to do things you imagined.</p>
+              <p>By the end of elementary school, I was programming in Pascal and learning about <strong>algorithms and flowcharts</strong>. In high school, I moved to C++, and I quickly discovered that I loved solving problems—especially the kind that don’t have an obvious answer.</p>
+              <p>That mindset eventually took me to the <strong>Computer Olympiad</strong>, where I represented my province. I enjoyed the challenge of sitting with a difficult problem until I could finally break it down.</p>
+              <p>At university, I studied <strong>Computer Science</strong> and became interested in <strong>AI, machine learning, and algorithms</strong>. My interest in genetic algorithms led me to develop an approach that combined them with a belief space to improve their performance.</p>
+              <p>During my master’s, I explored <strong>NLP, computer vision, and neuroscience</strong>. I worked on a vision model inspired by the human visual system for online signature recognition, and later began a long-term project on <strong>air-quality prediction from sky images</strong> using image processing and neural networks.</p>
+              <p>That project taught me something I still value in research: sometimes the interesting problems are the ones where the answer isn’t directly visible. With air pollution, we had to learn from subtle visual effects while accounting for many other environmental factors.</p>
+              <p>My research eventually led to being ranked <strong>first in Computer Science and across the School of Science</strong>.</p>
+              <p>During my PhD, I returned to a question that had been following me since those early days: <strong>efficiency</strong>. This time, I was looking at it through the lens of <strong>LLMs and AI systems</strong>. My work focuses on <strong>software-hardware co-design</strong> to make AI more <strong>energy-efficient and scalable</strong>.</p>
+              <p><strong> technology has changed dramatically since I was six. My curiosity hasn’t.</strong></p>
+              <p>Outside of research, I’m usually looking for something new—traveling, trying unfamiliar food, or exploring anything that catches my attention.</p>
+              <p>At the end of the day, I’m still driven by the same instinct:</p>
+              <p class="story__beat"><strong>If I don’t understand how something works, I want to figure it out.</strong></p>
+
+              <div class="story__close-wrap mt-2">
+                <button type="button" class="btn js-close-story">
+                  <span class="btn__text">See Less ←</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__photos reveal">
+          <figure class="photo photo--tall js-img">
+            <img src="images/about-1.jpg" alt="Moe Vahdatpour" loading="lazy" decoding="async">
+          </figure>
+
+          <div class="about__extra-photos">
+            <figure class="js-img"><img src="images/story/end-1.jpg" alt="Photo 1" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-2.jpg" alt="Photo 2" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-3.jpg" alt="Photo 3" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-4.jpg" alt="Photo 4" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-5.jpg" alt="Photo 5" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-6.jpg" alt="Photo 6" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-7.png" alt="Photo 5" loading="lazy" decoding="async"></figure>
+            <figure class="js-img"><img src="images/story/end-8.png" alt="Photo 6" loading="lazy" decoding="async"></figure>
+          
+          </div>
+        </div>
+      </div>
+
+      <div class="about__facts">
+        <div class="fact">
+          <div class="fact__n">+8</div>
+          <div class="fact__l mono">years in ML</div>
+        </div>
+        <div class="fact">
+          <div class="fact__n">7</div>
+          <div class="fact__l mono">peer-reviewed papers</div>
+        </div>
+        <div class="fact">
+          <div class="fact__n">+16</div>
+          <div class="fact__l mono">papers reviewed</div>
+        </div>
+        <div class="fact">
+          <div class="fact__n">+90</div>
+          <div class="fact__l mono">teammates worked with</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+
+<!-- ═══ Footer ════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__pitch">
+        <p class="footer__cue mono">Open to AI/ML engineering roles</p>
+        <p class="footer__line">Got a role, a problem, or a half-formed idea? I’d like to hear about it.</p>
+        <a class="footer__mail" href="mailto:msvahdatpour@gmail.com">msvahdatpour@gmail.com</a>
+      </div>
+
+      <div class="footer__links">
+        <a class="btn btn--primary" href="mailto:msvahdatpour@gmail.com?subject=Hello%20Moe">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+          Contact me
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/msvahdatpour/" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://scholar.google.com/citations?user=lhLLrosAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+          Scholar
+        </a>
+        <a class="btn" href="resume.html">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>
+          Resume
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span class="mono">© <span id="year">2026</span> Moe Vahdatpour</span>
+      <span class="mono">Designed and built for clarity.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ Modal shell (filled from the templates above) ═════════════════════ -->
+<dialog class="modal" id="modal" aria-labelledby="modal-title">
+  <div class="modal__scroll" id="modal-scroll">
+    <div class="modal__head">
+      <div>
+        <p class="modal__eyebrow mono" id="modal-eyebrow"></p>
+        <h3 class="modal__title" id="modal-title"></h3>
+      </div>
+      <button class="modal__close" id="modal-close" type="button" aria-label="Close">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body" id="modal-body"></div>
+  </div>
+</dialog>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Moe Vahdatpour",
+  "jobTitle": "AI/ML Engineer",
+  "email": "mailto:msvahdatpour@gmail.com",
+  "url": "https://moevahdatpour.github.io/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA" },
+  "knowsAbout": ["Computer Vision", "Large Language Models", "Agentic AI", "Generative AI", "Environmental AI", "Model Optimization"],
+  "sameAs": [
+    "https://github.com/moevahdatpour",
+    "https://www.linkedin.com/in/msvahdatpour/",
+    "https://scholar.google.com/citations?user=lhLLrosAAAAJ&hl=en"
+  ]
+}
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
