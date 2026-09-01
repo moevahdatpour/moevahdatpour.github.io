@@ -7,6 +7,12 @@
    12 reveal/motion · 13 responsive
    ==========================================================================
 
+   AFTER EDITING THIS FILE
+   -----------------------
+   Both pages link it as  css/styles.css?v=N , and index.html links
+   js/main.js?v=N . Browsers cache both hard, so if a change does not show up,
+   bump those numbers. Keep them in step so one edit covers CSS and JS.
+
    FONT SWAP — putting a licensed display font on the hero
    -------------------------------------------------------
    The hero name and section titles use --font-hero. Right now that is
@@ -1132,14 +1138,15 @@ button {
   padding: 0 var(--s-5) var(--s-5);
 }
 
+/* No fixed frame, no fill, no border: the figure takes the image's own shape,
+   so nothing is cropped and no dark letterbox appears around it. A transparent
+   diagram sits straight on the pop-up surface. */
 .modal__figure {
-  border: 1px solid var(--line-soft);
   border-radius: var(--r-sm);
   overflow: hidden;
-  background: var(--ground-deep);
-  aspect-ratio: 16 / 10;
+  background: transparent;
 }
-.modal__figure img { width: 100%; height: 100%; object-fit: cover; }
+.modal__figure img { display: block; width: 100%; height: auto; }
 
 .beat__label { color: var(--iris-dim); margin-bottom: var(--s-2); }
 .beat__text { color: var(--text-2); }
@@ -1240,7 +1247,12 @@ button {
 
   .hero { padding-top: clamp(6rem, 14vh, 8rem); }
   .hero__inner { grid-template-columns: 1fr; gap: var(--s-7); }
-  .hero__portrait { justify-self: start; order: -1; max-width: 240px; }
+  .hero__portrait {
+    justify-self: center;
+    margin-inline: auto;
+    order: -1;
+    max-width: 260px;
+  }
   .hero__portrait::before { inset: 12px -12px -12px 12px; }
 
   .grid { grid-template-columns: 1fr; }
@@ -1413,14 +1425,28 @@ button {
 /* Two columns, not a wrapping flexbox: a long title wraps inside its own
    column instead of pushing the venue onto the next line. */
 .r-pubs li {
+  padding-block: 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.r-pubrow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   column-gap: var(--s-5);
   row-gap: 2px;
-  padding-block: var(--s-3);
-  border-bottom: 1px solid var(--line-soft);
+  padding: var(--s-3);
+  margin-inline: calc(var(--s-3) * -1);
+  border-radius: var(--r-sm);
+  color: inherit;
 }
+a.r-pubrow {
+  transition: background-color var(--dur-1) var(--ease),
+              transform var(--dur-1) var(--ease),
+              box-shadow var(--dur-1) var(--ease);
+}
+a.r-pubrow:hover { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+a.r-pubrow:hover .r-pub__title { color: var(--iris); }
+a.r-pubrow:active { transform: translateY(1px); background: var(--raised); }
 .r-pubs li:first-child { padding-top: 0; }
 .r-pub__title { font-size: var(--t-sm); color: var(--text-2); max-width: 62ch; }
 /* the award sits on one line or moves to the next whole — never split */
@@ -1444,7 +1470,7 @@ button {
 @media (max-width: 560px) {
   .r-skills { grid-template-columns: 1fr; gap: var(--s-1) 0; }
   .r-skills dd { margin-bottom: var(--s-3); }
-  .r-pubs li { grid-template-columns: minmax(0, 1fr); }
+  .r-pubrow { grid-template-columns: minmax(0, 1fr); }
   .r-item__meta { white-space: normal; }
 }
 
@@ -1540,38 +1566,65 @@ button {
    directly on the page, so use marks that read on a dark ground (white or
    reversed, PNG with transparency). Logos are contained, never cropped.
    -------------------------------------------------------------------------- */
-.resume-page { --logo-bg: transparent; --logo-size: 42px; }
+.resume-page { --logo-bg: transparent; --logo-w: 84px; --logo-h: 48px; --logo-size: 42px; }
 
 /* Only rows that carry a logo become two columns. Project Work and anything
    else without one stays a plain block. */
-.r-item--org {
+.r-item--org:not(.r-item--link) {
   display: grid;
-  grid-template-columns: var(--logo-size, 42px) minmax(0, 1fr);
+  grid-template-columns: var(--logo-w, 84px) minmax(0, 1fr);
   column-gap: var(--s-4);
   align-items: start;
 }
+
+/* Rows that deep-link to a pop-up on the main page. The link carries the grid
+   so the whole row is one target. */
+.r-item--link { display: block; }
+.r-item__link {
+  display: block;
+  color: inherit;
+  border-radius: var(--r-sm);
+  padding: var(--s-2) var(--s-3);
+  margin-inline: calc(var(--s-3) * -1);
+}
+.r-item--org.r-item--link > .r-item__link {
+  display: grid;
+  grid-template-columns: var(--logo-w, 84px) minmax(0, 1fr);
+  column-gap: var(--s-4);
+  align-items: start;
+}
+a.r-item__link {
+  transition: background-color var(--dur-1) var(--ease),
+              transform var(--dur-1) var(--ease),
+              box-shadow var(--dur-1) var(--ease);
+}
+a.r-item__link:hover { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+a.r-item__link:hover .r-item__title { color: var(--iris); }
+a.r-item__link:active { transform: translateY(1px); background: var(--raised); }
 
 /* Fixed square. min/max pin it so nothing — a stretchy parent, a stale
    cache, a missing custom property — can let it grow. */
 .r-item__logo,
 .r-pub__logo {
   flex: none;
-  display: grid;
-  place-items: center;
-  width: var(--logo-size, 42px);
-  height: var(--logo-size, 42px);
-  min-width: var(--logo-size, 42px);
-  max-width: var(--logo-size, 42px);
+  /* block, not grid: a percentage height cannot resolve against an auto-sized
+     grid row, so height:100% on the image fell back to auto and the logo
+     overflowed the slot and got clipped. */
+  display: block;
+  width: var(--logo-w, 84px);
+  height: var(--logo-h, 48px);
+  min-width: var(--logo-w, 84px);
+  max-width: var(--logo-w, 84px);
   overflow: hidden;
   background: var(--logo-bg, transparent);
 }
 .r-item__logo img,
 .r-pub__logo img {
+  display: block;
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 /* a missing logo stays a quiet empty chip, not the dark lattice */
@@ -1580,15 +1633,38 @@ button {
 .r-item__logo.is-missing::after,
 .r-pub__logo.is-missing::after { content: none; }
 
-.r-creds li {
+/* The row itself is just the divider; the grid lives on the inner .r-cred so
+   that rows with a certificate URL can be a single link. */
+.r-creds li { display: block; padding-block: 0; }
+
+.r-cred {
   display: grid;
   grid-template-columns: 34px minmax(0, 1fr) auto;
   grid-template-areas: "logo title meta";
   align-items: center;
   column-gap: var(--s-3);
   row-gap: 2px;
+  padding: var(--s-3);
+  margin-inline: calc(var(--s-3) * -1);
+  border-radius: var(--r-sm);
+  color: inherit;
 }
-.r-creds .r-pub__logo { grid-area: logo; --logo-size: 34px; }
+
+/* Only the linked rows react — the others must not look clickable. */
+a.r-cred {
+  transition: background-color var(--dur-1) var(--ease),
+              transform var(--dur-1) var(--ease),
+              box-shadow var(--dur-1) var(--ease);
+}
+a.r-cred:hover { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+a.r-cred:hover .r-pub__title { color: var(--iris); }
+a.r-cred:hover .r-pub__meta { color: var(--text-2); }
+a.r-cred:active { transform: translateY(1px); background: var(--raised); }
+.r-creds .r-pub__logo {
+  grid-area: logo;
+  --logo-w: 34px;
+  --logo-h: 34px;
+}
 .r-creds .r-pub__title { grid-area: title; }
 .r-creds .r-pub__meta  { grid-area: meta; }
 
@@ -1676,7 +1752,9 @@ button {
 
 #about-story.is-expanded ~ .about__extra-photos,
 .about__grid:has(#about-story.is-expanded) .about__extra-photos {
-  max-height: 800px;
+  /* 8 square photos in one column on a 430px phone is ~3520px; 800px was
+     cutting them off halfway. 5000px clears any realistic count. */
+  max-height: 5000px;
   opacity: 1;
   margin-top: 1rem;
 }
@@ -1753,18 +1831,20 @@ button {
 }
 
 .exp__logo {
-  display: inline-block;
-  width: 70%;
-  height: auto;
-  border-radius: var(--radius-sm, 6px);
+  display: block;
+  width: 100%;
+  max-width: 100px;
+  height: 48px;
   overflow: hidden;
+  background: transparent;
+  border: 0;
   flex-shrink: 0;
 }
-
 .exp__logo img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: contain;      /* never crop a logo */
+  object-position: center;  /* emblems sit centred, not shoved into a corner */
   display: block;
 }
 
@@ -1772,13 +1852,65 @@ button {
 @media (max-width: 560px) {
   .resume-page { --logo-size: 38px; }
   .r-item--org { column-gap: var(--s-3); }
-  .r-creds li {
+  .r-cred {
     grid-template-columns: 34px minmax(0, 1fr);
     grid-template-areas: "logo title" "logo meta";
     align-items: start;
   }
+  /* "International Conference on Computational Vision · Feb 2024" cannot sit
+     on one line at this width — let it wrap instead of overflowing. */
+  .r-creds .r-pub__meta { white-space: normal; }
+  .r-pub__title em { white-space: normal; }
 }
 
 @media print {
   .r-item__logo, .r-pub__logo { border: 0; background: transparent; }
 }
+
+/* ==========================================================================
+   16. Mobile arrangement
+   ========================================================================== */
+
+/* The header carries three actions; below this width they no longer fit
+   beside the name, so Scholar steps out (it is still in the footer). */
+@media (max-width: 767px) {
+  .nav__actions a[href*="scholar.google"] { display: none; }
+}
+@media (max-width: 420px) {
+  .nav__mark span { display: none; }
+}
+
+/* About on a phone: photo first, then the text, then — once "See More" is
+   tapped — the extra photos underneath. display:contents lets the two photo
+   groups be ordered independently of their shared wrapper. */
+@media (max-width: 767px) {
+  .about__grid { display: flex; flex-direction: column; gap: var(--s-5); }
+  .about__photos { display: contents; }
+  .about__photos > .photo { order: 1; }
+  .about__prose { order: 2; }
+  .about__extra-photos { order: 3; }
+
+  .about__photos > .photo { aspect-ratio: 4 / 5; }
+  .about__photos > .photo img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Logos never carry a fill or a frame, on any page or breakpoint. */
+.exp__logo,
+.exp__logo img,
+.r-item__logo,
+.r-pub__logo {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 860px) {
+  .exp__logo { max-width: 92px; height: 42px; }
+}
+@media (max-width: 560px) {
+  .resume-page { --logo-w: 72px; --logo-h: 42px; }
+}
+
+/* Returning from a pop-up lands on the row that opened it; keep it clear of
+   the sticky bar. */
+.resume-page [id^="r-"] { scroll-margin-top: 84px; }
