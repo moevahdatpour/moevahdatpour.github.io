@@ -355,10 +355,7 @@ button {
 
 /* Role line — smaller than the name, set in the mono face like a caption. */
 .hero__role {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s-2) var(--s-3);
+  display: block;
   font-family: var(--font-mono);
   font-size: var(--t-mono);
   letter-spacing: 0.11em;
@@ -366,7 +363,14 @@ button {
   color: var(--text-2);
   margin-bottom: var(--s-4);
 }
-.hero__role .sep { color: var(--iris); }
+
+.hero__role-line {
+  display: block;
+}
+
+.hero__role .sep {
+  color: var(--iris);
+}
 
 .hero__bio {
   max-width: 48ch;
