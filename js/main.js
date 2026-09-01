@@ -210,6 +210,16 @@
     var done = function () {
       modal.close();
       document.body.classList.remove('is-locked');
+
+      // The URL says where the reader came from, so nothing has to be tracked:
+      // resume.html links here as index.html?from=resume#<id>, and closing sends
+      // them back to that row. A pop-up opened on this page has no such flag and
+      // simply closes in place.
+      if (/[?&]from=resume/.test(location.search)) {
+        location.href = 'resume.html' + (current ? '#r-' + current.dataset.modal : '');
+        return;
+      }
+
       if (lastTrigger) lastTrigger.focus();
     };
     reduced ? done() : setTimeout(done, 200);
@@ -221,13 +231,29 @@
 
     document.addEventListener('click', function (e) {
       var trigger = e.target.closest('[data-modal]');
-      if (trigger) openModal(trigger);
+      if (!trigger) return;
+      openModal(trigger);
     });
 
     $('#modal-close').addEventListener('click', closeModal);
     modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
     // run the exit animation instead of the instant native dismiss
     modal.addEventListener('cancel', function (e) { e.preventDefault(); closeModal(); });
+    // Deep link: resume.html sends you here as index.html#proj-snn, which opens
+    // that pop-up on arrival. Keeps one copy of the content, on this page.
+    function openFromHash() {
+      var id = (location.hash || '').slice(1);
+      if (!id) return;
+      var trigger = document.querySelector('[data-modal="' + id + '"]');
+      if (!trigger) return;
+      // go through the trigger's own click so this takes exactly the same path
+      // as a real one — nothing to keep in sync
+      if (modal.open) modal.close();
+      trigger.click();
+    }
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+
     modal.addEventListener('keydown', function (e) {
       if (!current || !current.classList.contains('card')) return;
       if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
