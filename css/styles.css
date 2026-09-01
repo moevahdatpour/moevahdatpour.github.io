@@ -1644,8 +1644,27 @@ a.r-item__link:active { transform: translateY(1px); background: var(--raised); }
   align-items: center;
   column-gap: var(--s-3);
   row-gap: 2px;
+  padding: var(--s-3);
+  margin-inline: calc(var(--s-3) * -1);
+  border-radius: var(--r-sm);
+  color: inherit;
 }
-.r-creds .r-pub__logo { grid-area: logo; --logo-size: 34px; }
+
+/* Only the linked rows react — the others must not look clickable. */
+a.r-cred {
+  transition: background-color var(--dur-1) var(--ease),
+              transform var(--dur-1) var(--ease),
+              box-shadow var(--dur-1) var(--ease);
+}
+a.r-cred:hover { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+a.r-cred:hover .r-pub__title { color: var(--iris); }
+a.r-cred:hover .r-pub__meta { color: var(--text-2); }
+a.r-cred:active { transform: translateY(1px); background: var(--raised); }
+.r-creds .r-pub__logo {
+  grid-area: logo;
+  --logo-w: 34px;
+  --logo-h: 34px;
+}
 .r-creds .r-pub__title { grid-area: title; }
 .r-creds .r-pub__meta  { grid-area: meta; }
 
@@ -1847,3 +1866,51 @@ a.r-item__link:active { transform: translateY(1px); background: var(--raised); }
 @media print {
   .r-item__logo, .r-pub__logo { border: 0; background: transparent; }
 }
+
+/* ==========================================================================
+   16. Mobile arrangement
+   ========================================================================== */
+
+/* The header carries three actions; below this width they no longer fit
+   beside the name, so Scholar steps out (it is still in the footer). */
+@media (max-width: 767px) {
+  .nav__actions a[href*="scholar.google"] { display: none; }
+}
+@media (max-width: 420px) {
+  .nav__mark span { display: none; }
+}
+
+/* About on a phone: photo first, then the text, then — once "See More" is
+   tapped — the extra photos underneath. display:contents lets the two photo
+   groups be ordered independently of their shared wrapper. */
+@media (max-width: 767px) {
+  .about__grid { display: flex; flex-direction: column; gap: var(--s-5); }
+  .about__photos { display: contents; }
+  .about__photos > .photo { order: 1; }
+  .about__prose { order: 2; }
+  .about__extra-photos { order: 3; }
+
+  .about__photos > .photo { aspect-ratio: 4 / 5; }
+  .about__photos > .photo img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Logos never carry a fill or a frame, on any page or breakpoint. */
+.exp__logo,
+.exp__logo img,
+.r-item__logo,
+.r-pub__logo {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 860px) {
+  .exp__logo { max-width: 92px; height: 42px; }
+}
+@media (max-width: 560px) {
+  .resume-page { --logo-w: 72px; --logo-h: 42px; }
+}
+
+/* Returning from a pop-up lands on the row that opened it; keep it clear of
+   the sticky bar. */
+.resume-page [id^="r-"] { scroll-margin-top: 84px; }
