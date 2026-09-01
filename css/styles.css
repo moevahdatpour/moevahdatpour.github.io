@@ -1665,6 +1665,14 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   --logo-w: 34px;
   --logo-h: 34px;
 }
+<<<<<<< HEAD
+=======
+.r-creds .r-pub__logo {
+  grid-area: logo;
+  --logo-w: 34px;
+  --logo-h: 34px;
+}
+>>>>>>> b9c353d2392c7c3f7494fbd92a09d7386d461fe5
 .r-creds .r-pub__title { grid-area: title; }
 .r-creds .r-pub__meta  { grid-area: meta; }
 
@@ -1910,7 +1918,10 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
 @media (max-width: 560px) {
   .resume-page { --logo-w: 72px; --logo-h: 42px; }
 }
+<<<<<<< HEAD
 
 /* Returning from a pop-up lands on the row that opened it; keep it clear of
    the sticky bar. */
 .resume-page [id^="r-"] { scroll-margin-top: 84px; }
+=======
+>>>>>>> b9c353d2392c7c3f7494fbd92a09d7386d461fe5
