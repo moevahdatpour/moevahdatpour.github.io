@@ -2226,19 +2226,25 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   background: var(--surface);
 }
 
-/* A slight alternating tilt so a row reads as photographs laid down rather
-   than as cells in a table. Under a degree: enough to take the stiffness out
-   of the grid, not enough to read as a scrapbook. Straightens on hover. */
-.figs > .fig:nth-child(odd)  { transform: rotate(-0.7deg) translateY(3px); }
-.figs > .fig:nth-child(even) { transform: rotate(0.55deg) translateY(-3px); }
-.figs > .fig:nth-child(3n)   { transform: rotate(0.3deg) translateY(4px); }
-
+/* The pictures sit slightly off-square so a row does not read as a table, but
+   they share a bottom line: rotating from `bottom center` keeps the base of
+   every picture on the same level and lets only the tops splay. The previous
+   version also nudged each one up or down a few pixels, and that vertical
+   stagger is what made the row look misaligned rather than casual — the eye
+   reads a broken baseline as a mistake, and a fanned top edge as deliberate.
+   Angles stay under a degree. */
 .figs > .fig {
+  transform-origin: bottom center;
   transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
 }
 
+.figs > .fig:nth-child(1) { transform: rotate(-0.8deg); }
+.figs > .fig:nth-child(2) { transform: rotate(0.45deg); }
+.figs > .fig:nth-child(3) { transform: rotate(-0.35deg); }
+.figs > .fig:nth-child(4) { transform: rotate(0.7deg); }
+
 .figs > .fig:hover {
-  transform: rotate(0deg) translateY(0) scale(1.03);
+  transform: rotate(0deg) scale(1.03);
   z-index: 2;
   box-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.85);
 }
@@ -2280,6 +2286,7 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
      that width is what decides how big the pictures are. */
   width: 100%;
   max-width: 730px;
+  align-items: flex-end;
   margin: var(--s-5) auto var(--s-6);
 }
 
