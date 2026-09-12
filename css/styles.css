@@ -57,6 +57,10 @@
   --text:   #efedf4;
   --text-2: #a7a1b6;
   --text-3: #8b8599;   /* 4.5:1 on --ground — do not darken */
+  /* Emphasis inside body copy. Sits between --text-2 and --text so a bolded
+     phrase lifts off the paragraph without jumping to full brightness, which
+     read as a different typeface mid-sentence. */
+  --text-em: #ccc6da;
 
   /* Accent — used with restraint. */
   --iris:      #8c7bff;
@@ -360,22 +364,80 @@ button {
 .hero__name .line > span { display: block; }
 
 /* Role line — smaller than the name, set in the mono face like a caption. */
+/* The identity line. This is the first thing a reader looks for, so it is
+   sized to be read, not scanned past: a display-weight lead line, then the
+   three specialisms as accented keys. Both were 12px mono before, which buried
+   the most important sentence on the page under the least important styling. */
 .hero__role {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+
+.hero__role-lead {
   display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--iris);
+}
+
+.hero__role-lead .sep {
+  color: var(--iris-dim);
+  margin: 0 0.15em;
+}
+
+/* No boxes. The three specialisms read as one continuous line divided by
+   hairlines — same emphasis as the pills gave them, without three competing
+   containers sitting under a heading that is already a container's worth of
+   weight. */
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.9rem;
+}
+
+.hero__tag {
+  position: relative;
   font-family: var(--font-mono);
-  font-size: var(--t-mono);
-  letter-spacing: 0.11em;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-2);
-  margin-bottom: var(--s-4);
+  padding: 0.2rem 0;
 }
 
-.hero__role-line {
-  display: block;
+/* The rule sits in the gap rather than on the keyword, so a wrapped row never
+   leaves a divider dangling at the end of a line. */
+.hero__tag + .hero__tag::before {
+  content: "";
+  position: absolute;
+  left: -0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 0.85em;
+  background: var(--iris-edge);
 }
 
-.hero__role .sep {
-  color: var(--iris);
+.js .hero__intro .rise .hero__tag {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: rise 620ms var(--ease) forwards;
+  /* Staggered off the parent line's own delay so the three read left to right
+     rather than arriving as a block. */
+  animation-delay: calc(var(--k, 0) * 80ms + 560ms);
+}
+
+@media (max-width: 560px) {
+  .hero__tags { gap: 0 0.7rem; }
+  .hero__tag { font-size: 0.72rem; letter-spacing: 0.08em; }
 }
 
 .hero__bio {
@@ -431,11 +493,14 @@ button {
   width: 100%;
   max-width: 372px;
 }
+/* An outlined frame offset behind the portrait — a line, not a filled block.
+   It was 1px originally, which read as a stray hairline; 2px is enough to look
+   deliberate without turning into a slab. */
 .hero__portrait::before {
   content: "";
   position: absolute;
   inset: 16px -16px -16px 16px;
-  border: 1px solid var(--iris-edge);
+  border: 2px solid var(--iris-edge);
   border-radius: var(--r-sm);
   pointer-events: none;
 }
@@ -741,10 +806,10 @@ button {
 
 .pub {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto;
   grid-template-areas:
-    "title   leader venue go"
-    "authors authors authors go";
+    "kind title   leader venue go"
+    "kind authors authors authors go";
   align-items: baseline;
   column-gap: var(--s-3);
   row-gap: 5px;
@@ -764,6 +829,23 @@ button {
   background: var(--raised);
   box-shadow: inset 0 0 0 1px var(--iris-edge);
 }
+
+/* Marks every row as an article at a glance, so the list reads as papers
+   rather than as links. Decorative — the venue and authors already say what
+   these are to a screen reader. */
+.pub__kind {
+  grid-area: kind;
+  align-self: start;
+  display: flex;
+  margin-top: -1px;
+  color: var(--text-3);
+  transition: color var(--dur-1) var(--ease);
+}
+
+.pub__kind svg { width: 24px; height: 24px; stroke-width: 1.35; }
+
+.pub:hover .pub__kind,
+.pub:focus-visible .pub__kind { color: var(--iris); }
 
 .pub__title {
   grid-area: title;
@@ -835,26 +917,6 @@ button {
 
 .pubs__out { margin-top: var(--s-5); }
 
-/* --- 9. About ------------------------------------------------------------ */
-.about {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-  gap: clamp(2.5rem, 6vw, 4.5rem);
-  align-items: start;
-}
-.about__prose {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--s-4);
-  color: var(--text-2);
-  font-size: var(--t-base);
-  line-height: 1.65;
-  max-width: 60ch;
-}
-.about__prose p { max-width: 60ch; }
-.about__prose strong { color: var(--text); font-weight: 500; }
-
 /* The hook line carries the section — everything under it is supporting. */
 .about__lead {
   font-family: var(--font-display);
@@ -868,14 +930,6 @@ button {
 .about__more .icon { transition: transform var(--dur-2) var(--ease); }
 .about__more:hover .icon { transform: translateX(3px); }
 
-.about__facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--s-5) var(--s-6);
-  margin-top: var(--s-3);
-  padding-top: var(--s-5);
-  border-top: 1px solid var(--line-soft);
-}
 .fact__n {
   font-family: var(--font-display);
   font-size: 1.85rem;
@@ -886,11 +940,6 @@ button {
 }
 .fact__l { color: var(--text-3); margin-top: 2px; }
 
-.about__photos {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--s-3);
-}
 .photo {
   overflow: hidden;
   border: 1px solid var(--line-soft);
@@ -1239,7 +1288,6 @@ button {
   .hero__inner { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
   .hero__portrait { max-width: 300px; }
   .about { grid-template-columns: 1fr; }
-  .about__prose { max-width: none; }
 }
 
 @media (max-width: 860px) {
@@ -1283,22 +1331,19 @@ button {
 
 @media (max-width: 560px) {
   .pub {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
-      "title   go"
-      "authors go"
-      "venue   go";
+      "kind title   go"
+      "kind authors go"
+      "kind venue   go";
     row-gap: 4px;
   }
   .pub__leader { display: none; }
   .pub__venue { justify-self: start; }
-  .about__photos { grid-template-columns: repeat(2, 1fr); }
-  .photo--tall { grid-row: span 2; }
   .modal__head { padding: var(--s-4) var(--s-4) var(--s-3); }
   .modal__body { padding: 0 var(--s-4) var(--s-4); }
   .footer__top { flex-direction: column; align-items: flex-start; }
 }
-
 /* ==========================================================================
    14. Résumé page (resume.html) — one column, quiet, print-friendly.
    Shares every token above; nothing here affects index.html.
@@ -1497,11 +1542,10 @@ a.r-pubrow:active { transform: translateY(1px); background: var(--raised); }
 .story { display: flex; flex-direction: column; gap: var(--s-4); }
 .story p {
   color: var(--text-2);
-  font-size: var(--t-base);
-  line-height: 1.72;
-  max-width: 64ch;
+  font-size: 1.09rem;
+  line-height: 1.7;
 }
-.story strong { color: var(--text); font-weight: 500; }
+.story strong { color: var(--text-em); font-weight: 500; }
 .story em { color: var(--text); font-style: italic; }
 
 /* The two lines he set in bold on their own carry the piece; give them room. */
@@ -1668,101 +1712,10 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
 .r-creds .r-pub__title { grid-area: title; }
 .r-creds .r-pub__meta  { grid-area: meta; }
 
-
-
 .about {
   display: flex;
   flex-direction: column;
   gap: var(--s-6, 2rem);
-}
-
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-6, 2rem);
-  align-items: stretch;
-}
-
-@media (min-width: 768px) {
-  .about__grid {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
-}
-
-.about__photos {
-  width: 100%;
-  height: auto;
-  align-self: start; 
-}
-
-.about__photos figure {
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.about__photos .photo {
-  width: 100%;
-  height: 480px;
-  max-height: 70vh; 
-  overflow: hidden;
-  border-radius: var(--radius, 8px);
-}
-
-.about__photos .photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: center;
-}
-
-@media (max-width: 767px) {
-  .about__photos .photo {
-    height: 350px;
-  }
-}
-
-.about__extra-photos {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  width: 100%;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
-  margin-top: 0;
-  box-sizing: border-box;
-}
-
-.about__extra-photos figure {
-  margin: 0;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: var(--radius, 8px);
-}
-
-.about__extra-photos img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-#about-story.is-expanded ~ .about__extra-photos,
-.about__grid:has(#about-story.is-expanded) .about__extra-photos {
-  /* 8 square photos in one column on a 430px phone is ~3520px; 800px was
-     cutting them off halfway. 5000px clears any realistic count. */
-  max-height: 5000px;
-  opacity: 1;
-  margin-top: 1rem;
-}
-
-@media (max-width: 480px) {
-  .about__extra-photos {
-    grid-template-columns: 1fr;
-  }
 }
 
 .mt-2 {
@@ -1816,12 +1769,6 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   text-align: center;
 }
 
-.about__facts {
-  width: 100%;
-  margin-top: 0;
-}
-
-
 .exp__meta-col {
   display: flex;
   flex-direction: column;
@@ -1847,7 +1794,6 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   object-position: center;  /* emblems sit centred, not shoved into a corner */
   display: block;
 }
-
 
 @media (max-width: 560px) {
   .resume-page { --logo-size: 38px; }
@@ -1880,20 +1826,6 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   .nav__mark span { display: none; }
 }
 
-/* About on a phone: photo first, then the text, then — once "See More" is
-   tapped — the extra photos underneath. display:contents lets the two photo
-   groups be ordered independently of their shared wrapper. */
-@media (max-width: 767px) {
-  .about__grid { display: flex; flex-direction: column; gap: var(--s-5); }
-  .about__photos { display: contents; }
-  .about__photos > .photo { order: 1; }
-  .about__prose { order: 2; }
-  .about__extra-photos { order: 3; }
-
-  .about__photos > .photo { aspect-ratio: 4 / 5; }
-  .about__photos > .photo img { width: 100%; height: 100%; object-fit: cover; }
-}
-
 /* Logos never carry a fill or a frame, on any page or breakpoint. */
 .exp__logo,
 .exp__logo img,
@@ -1914,3 +1846,524 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
 /* Returning from a pop-up lands on the row that opened it; keep it clear of
    the sticky bar. */
 .resume-page [id^="r-"] { scroll-margin-top: 84px; }
+
+/* ── Sticky video → panel takeover ────────────────────────────────────────
+   A pinned video that the following sections slide up and over, then slide
+   back down off as you scroll up.
+
+   Built on position:sticky and normal document flow rather than a scrubbed
+   translateY. The two are visually identical — a section rising up the page
+   over a pinned layer IS translateY(100%) → translateY(0%) against scroll
+   progress — but flow costs nothing to run: there is no scroll handler, no
+   timeline to keep in sync, no library, and no per-frame work at all. It is
+   frame-perfect with the scroll by construction, and reverses exactly, which
+   a scrubbed animation only approximates. See the note on `will-change`. */
+/* The pin height, and the dwell before the next panel starts covering it.
+   Declared on the root so the panel can subtract the same value. */
+:root {
+  --pin-h: 100svh;
+  --pin-dwell: 50svh;
+}
+
+.stack {
+  position: relative;
+  /* Sits under every panel that follows it. */
+  z-index: 1;
+
+  /* Height is what buys the pinned scroll. The pin stays stuck for
+     (height - --pin-h), and the panel below is pulled up by --pin-h so that it
+     finishes covering the video at the exact scroll position where the pin
+     would start to move. That overlap is the whole trick: without it the video
+     scrolls away just as the panel begins to cross it, which is the one thing
+     it must never do. */
+  height: calc(var(--pin-h) * 2 + var(--pin-dwell));
+}
+
+.stack__pin {
+  position: sticky;
+  top: 0;
+  height: var(--pin-h);
+  overflow: hidden;
+  background: var(--ground);
+  /* Promotes the pinned layer so the compositor repositions it during scroll
+     instead of the main thread repainting it. This is the one place the hint
+     earns its keep — it is deliberately not on the panels, which never animate
+     and would only waste a layer each. */
+  will-change: transform;
+}
+
+/* Pull the first panel up onto the pin's sticky range. */
+.stack + .stack__panel {
+  margin-top: calc(var(--pin-h) * -1);
+}
+
+/* The panel's own leading edge is slightly see-through, so it does not cut in
+   as a hard line. Nothing is painted above the panel — an overlay band there
+   just washes the video with a haze. This is the panel's own background: a
+   little transparent at its very top edge, fully solid a short way down.
+
+   background-color is cleared so the alpha at the top actually shows the video
+   rather than resolving against a solid fill underneath it. */
+.stack + .stack__panel {
+  background-color: transparent;
+  background-image: linear-gradient(to bottom,
+    rgba(20, 19, 26, 0.42) 0,
+    rgba(20, 19, 26, 0.86) 95px,
+    var(--ground) 150px);
+}
+.stack__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 42%;
+  /* No transform, no transition, no animation — the video never moves, zooms
+     or pans. The only treatment is a static colour grade so the warm room sits
+     in the site's palette. */
+  filter: saturate(0.78) contrast(1.05);
+}
+
+.stack__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(15, 14, 20, 0.55);
+}
+
+/* ---- The panels --------------------------------------------------------
+   Everything after the pin needs two things in order to slide over it: a
+   stacking context above the video, and an opaque background so the video does
+   not show through. The ascending z-index is assigned in DOM order by
+   initStack, so adding another panel later needs no CSS change. Without JS
+   they all share this base level, which still covers the video correctly —
+   they never overlap each other, so their relative order does not show. */
+.stack__panel {
+  position: relative;
+  z-index: 2;
+  background: var(--ground);
+}
+
+@media (max-width: 860px) {
+  /* Less dead scroll on a phone, where the dwell feels much longer. */
+  :root { --pin-dwell: 22svh; }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  /* A 21:9 source cropped to a portrait viewport can only show a narrow slice
+     of its width. Centred on the default it lands on empty wall, so on tall
+     screens the crop moves across to hold the speaker in frame. */
+  .stack__video { object-position: 84% 45%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Nothing here animates, so there is nothing to switch off — but a looping
+     video is still moving content, and initStack pauses it. */
+  .stack__video { filter: saturate(0.78) contrast(1.05); }
+}
+
+@media print {
+  .stack { display: none; }
+}
+
+/* ==========================================================================
+   17. About — layout
+   ==========================================================================
+   The section was a plain two-column block with the facts left floating
+   underneath as four unanchored numbers. This gives it a structure: a deck
+   that opens the section, a reading column beside a portrait that stays put
+   while you read it, a full-width "See more" bar, and the facts as a single
+   bounded strip instead of four loose figures.
+
+   Content is untouched — every rule here is layout and type. Desktop-only
+   changes are scoped to the min-width query so the mobile ordering in §16
+   (main photo, then text, then the extra photos on expand) still holds. */
+
+/* ---- The deck ---------------------------------------------------------- */
+/* The opening line is the section's hook, so it is set as a deck rather than
+   as the first of three equal paragraphs. */
+
+.js-toggle-story.btn--inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 0;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-sm);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: box-shadow var(--dur-1) var(--ease),
+              background-color var(--dur-1) var(--ease),
+              color var(--dur-1) var(--ease);
+}
+
+.js-toggle-story.btn--inline:hover {
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--iris-edge);
+  color: var(--iris);
+}
+
+/* ---- The long version -------------------------------------------------- */
+/* Set off from the short version by a rule rather than by a heading, so the
+   two read as one continuous piece. */
+.about__expanded.is-expanded > .story {
+  padding-top: var(--s-5);
+}
+
+.story { max-width: 62ch; }
+
+.story p.story__beat {
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--iris);
+}
+
+/* ==========================================================================
+   18. Project cards — overhaul
+   ==========================================================================
+   The old card had a specific bug and a general problem.
+
+   The bug: the tags were outlined in --line-soft, and hovering swapped the
+   card's background to --raised, which --line-soft cannot be seen against. The
+   outlines vanished mid-hover and the row fell apart. Outlining small chips on
+   a surface that changes underneath them was always going to be fragile, so
+   the outlines are gone — the chips are filled instead, and they get *more*
+   legible on hover rather than less.
+
+   The general problem: four bands of small uppercase text (badges, title,
+   blurb, tags) stacked at even spacing, with nothing telling you which mattered
+   or that the card was pressable. Now the badges sit on the image, the title
+   leads, and the tags are separated into their own zone by a rule. */
+
+.card {
+  position: relative;
+  border-color: var(--line-soft);
+  transition: border-color var(--dur-2) var(--ease),
+              background-color var(--dur-2) var(--ease),
+              transform var(--dur-2) var(--ease),
+              box-shadow var(--dur-2) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--iris-edge);
+  box-shadow: 0 20px 44px -28px rgba(0, 0, 0, 0.95);
+}
+
+/* Keyboard users get the same signal the mouse gets. */
+.card:focus-visible {
+  outline: none;
+  border-color: var(--iris);
+  box-shadow: 0 0 0 3px var(--iris-wash), 0 20px 44px -28px rgba(0, 0, 0, 0.95);
+}
+
+/* ---- Media ---- */
+.card__media {
+  border-bottom: 0;
+  aspect-ratio: 16 / 9;
+}
+
+/* A scrim at the foot of the image so the badges sitting on it stay readable
+   whatever the photograph happens to be doing there. */
+.card__media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 58%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(15, 14, 20, 0.92), transparent);
+}
+
+/* ---- Badges, lifted onto the image ---- */
+.card__media > .badges {
+  position: absolute;
+  left: var(--s-4);
+  right: var(--s-4);
+  bottom: var(--s-4);
+  z-index: 2;
+}
+
+/* Filled, not outlined — nothing to disappear when the card lightens. */
+.badge {
+  border: 0;
+  padding: 4px var(--s-3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.badge--paper {
+  color: var(--sand);
+  background: rgba(216, 178, 106, 0.16);
+}
+
+.badge--year {
+  color: var(--text-2);
+  background: rgba(244, 243, 250, 0.10);
+}
+
+/* ---- Title ---- */
+.card__title {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.22;
+}
+
+.card__title .icon { width: 17px; height: 17px; }
+
+/* ---- Tags ---- */
+/* Their own zone, marked off by a rule, so the card reads title → summary →
+   stack rather than as four interchangeable bands. */
+.tags {
+  gap: 6px;
+  margin-top: auto;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-soft);
+}
+
+.tags > li,
+.tags > span {
+  border: 0;
+  padding: 4px 9px;
+  border-radius: var(--r-xs);
+  background: var(--ground-deep);
+  color: var(--text-3);
+  transition: background-color var(--dur-2) var(--ease),
+              color var(--dur-2) var(--ease);
+}
+
+.card:hover .tags > li,
+.card:hover .tags > span,
+.card:focus-visible .tags > li,
+.card:focus-visible .tags > span {
+  background: var(--iris-wash);
+  color: var(--iris-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover { transform: none; }
+}
+
+/* ── About story — subheadings ────────────────────────────────────────────
+   The long version used to carry its structure in scattered bold phrases,
+   which read as speckling rather than as hierarchy. The structure now sits in
+   short subheadings and the body text runs plain underneath them. */
+.story__h {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  /* Full sentences rather than short labels, so they take a paragraph's
+     line-height and the full reading column — a narrower cap than the prose
+     just made every heading wrap a word or two early. */
+  line-height: 1.36;
+  letter-spacing: -0.008em;
+  color: var(--text);
+  margin-top: var(--s-5);
+}
+
+/* The first one already has the rule above it doing the separating. */
+.story__h:first-child { margin-top: 0; }
+
+/* The closing beat is a statement, not a heading — it keeps the accent rule
+   and the weight, without a <strong> inside it. */
+.story p.story__beat {
+  color: var(--text-em);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   19. About — one flowing column with photographs set into it
+   ══════════════════════════════════════════════════════════════════════════
+   This replaced a two-column layout with all the text on the left and every
+   photograph stacked in a rail on the right, where the pictures had no
+   relationship to the paragraph they belonged to.
+
+   Now it is a single reading column on a breakout grid: prose is held to a
+   comfortable measure in the centre track, and the photo groups span the wider
+   track, so each set of pictures sits directly under the passage it belongs
+   to. Text and image share one flow instead of running in parallel. */
+.about__flow {
+  display: grid;
+  grid-template-columns:
+    [wide-start] minmax(0, 1fr)
+    [text-start] min(66ch, 100%) [text-end]
+    minmax(0, 1fr) [wide-end];
+  row-gap: var(--s-4);
+}
+
+.about__flow > * { grid-column: text; }
+/* :not() keeps this off the deck, whose own rule is less specific and was
+   being overridden into body size by it. */
+.about__flow > p:not(.about__deck) { font-size: 1.09rem; line-height: 1.7; color: var(--text-2); }
+.about__flow > .figs,
+.about__flow > .fig--lead { grid-column: wide; }
+
+/* The long version has to span the wide track too, otherwise its own breakout
+   grid is nested inside the text column and its figures cannot reach past it. */
+.about__flow > .about__expanded { grid-column: wide; }
+
+.about__close {
+  color: var(--text-em);
+  font-weight: 500;
+}
+
+.about__deck {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--iris);
+}
+
+.about__more-wrap { margin-top: var(--s-2); }
+
+/* ---- Figures ----------------------------------------------------------- */
+.fig {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+}
+
+/* A slight alternating tilt so a row reads as photographs laid down rather
+   than as cells in a table. Under a degree: enough to take the stiffness out
+   of the grid, not enough to read as a scrapbook. Straightens on hover. */
+.figs > .fig:nth-child(odd)  { transform: rotate(-0.7deg) translateY(3px); }
+.figs > .fig:nth-child(even) { transform: rotate(0.55deg) translateY(-3px); }
+.figs > .fig:nth-child(3n)   { transform: rotate(0.3deg) translateY(4px); }
+
+.figs > .fig {
+  transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+}
+
+.figs > .fig:hover {
+  transform: rotate(0deg) translateY(0) scale(1.03);
+  z-index: 2;
+  box-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figs > .fig,
+  .figs > .fig:hover { transform: none; transition: none; }
+}
+
+.fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A 16:9 crop of the original portrait, framed on the subject. The portrait
+   left large empty margins either side of it in this track, and rotating it
+   made the browser resample the whole image, which softened it. It fills the
+   track square-on instead. */
+.fig--lead {
+  aspect-ratio: 16 / 9;
+  /* Sized by height, the same way the figure rows are, so it sits in
+     proportion with them instead of dominating the section. */
+  height: clamp(280px, 46vh, 430px);
+  width: auto;
+  justify-self: center;
+  margin-block: var(--s-4) var(--s-5);
+}
+
+.figs {
+  display: flex;
+  /* No wrapping. A fixed row height plus natural widths looked right at one
+     viewport and dropped the last picture onto a line of its own at another;
+     a justified row always resolves to exactly one line. */
+  flex-wrap: nowrap;
+  gap: var(--s-3);
+  /* This is the size control: the row fills the width it is given, so capping
+     that width is what decides how big the pictures are. */
+  width: 100%;
+  max-width: 730px;
+  margin: var(--s-5) auto var(--s-6);
+}
+
+/* flex-grow set to the same ratio as the aspect ratio means every picture in
+   the row resolves to the same height at its own true proportions. */
+.figs > .fig {
+  flex: var(--ar, 1) 1 0;
+  aspect-ratio: var(--ar, 1);
+}
+
+/* ---- Figures band ------------------------------------------------------
+   Moved out of About to sit directly under the hero, where the four numbers
+   act as a summary of what follows rather than as a footnote to the story.
+   One bounded strip with hairlines between the cells, so they share a
+   baseline and an edge instead of floating at arbitrary distances. */
+.stats-band {
+  padding-block: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.fact {
+  padding: var(--s-4) var(--s-4);
+  border-left: 1px solid var(--line-soft);
+}
+
+.fact:first-child { border-left: 0; }
+
+.fact__n {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  color: var(--iris);
+  font-variant-numeric: tabular-nums;
+}
+
+.fact__l {
+  color: var(--text-3);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  /* Four cells at phone width leaves ~80px each — two rows instead. */
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact:nth-child(odd) { border-left: 0; }
+  .fact:nth-child(n + 3) { border-top: 1px solid var(--line-soft); }
+}
+
+@media (max-width: 720px) {
+  /* Four portraits side by side is roughly 80px each on a phone. Two columns
+     on a shared crop reads better than a row of slivers. */
+  .figs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-2);
+  }
+  .figs > .fig { aspect-ratio: 3 / 4; flex: none; }
+  .fig--lead { aspect-ratio: 3 / 2; height: auto; width: 100%; }
+}
+
+/* ---- The long version -------------------------------------------------- */
+.story {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-template-columns:
+    [wide-start] minmax(0, 1fr)
+    [text-start] min(66ch, 100%) [text-end]
+    minmax(0, 1fr) [wide-end];
+  row-gap: var(--s-4);
+  max-width: none;
+}
+
+.story > * { grid-column: text; }
+.story > .figs { grid-column: wide; }

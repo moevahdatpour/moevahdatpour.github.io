@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Outfit:wght@200..600&amp;family=Syncopate:wght@400;700&amp;display=swap">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap">
-<link rel="stylesheet" href="css/styles.css?v=19">
+<link rel="stylesheet" href="css/styles.css?v=65">
 
 <script>document.documentElement.className = "js";</script>
 </head>
@@ -95,12 +95,13 @@
       </h1>
 
       <p class="hero__role rise" style="--i:3">
-        <span class="hero__role-line">
+        <span class="hero__role-lead">
           AI/ML Engineer <span class="sep" aria-hidden="true">·</span> Researcher
         </span>
-        <span class="hero__role-line">
-          Computer Vision <span class="sep" aria-hidden="true">·</span> LLMs <span class="sep" aria-hidden="true">·</span>
-          Efficient AI
+        <span class="hero__tags">
+          <span class="hero__tag" style="--k:0">Computer Vision</span>
+          <span class="hero__tag" style="--k:1">LLMs</span>
+          <span class="hero__tag" style="--k:2">Efficient AI</span>
         </span>
       </p>
 
@@ -125,6 +126,30 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ═══ Figures ═══════════════════════════════════════════════ -->
+<section class="stats-band" aria-label="By the numbers">
+  <div class="shell">
+    <div class="stats" data-stagger>
+          <div class="fact">
+            <div class="fact__n">+8</div>
+            <div class="fact__l mono">years in ML</div>
+          </div>
+          <div class="fact">
+            <div class="fact__n">7</div>
+            <div class="fact__l mono">peer-reviewed papers</div>
+          </div>
+          <div class="fact">
+            <div class="fact__n">+16</div>
+            <div class="fact__l mono">papers reviewed</div>
+          </div>
+          <div class="fact">
+            <div class="fact__n">+90</div>
+      <div class="fact__l mono">teammates worked with</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -358,9 +383,10 @@
               aria-label="LLM-Guided Air Pollution Forecasting — open details">
         <span class="card__media js-img">
           <img src="images/projects/llm-air-quality.webp" alt="Sky images paired with predicted air-quality levels" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--paper">ICCVW 2025</span><span class="badge badge--paper">Springer 2018</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--paper">ICCVW 2025</span><span class="badge badge--paper">Springer 2018</span></span>
+          
           <span class="card__title">LLM Guided Air Pollution Forecasting
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
@@ -373,9 +399,10 @@
               aria-label="Agent-Based AI for Sustainable LLMs — open details">
         <span class="card__media js-img">
           <img src="images/projects/agentic-sustainable-llms.webp" alt="Diagram of an agentic framework over FPGA-accelerated learning" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--paper">ASPLOSW 2026</span><span class="badge badge--paper">IJCNN 2025</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--paper">ASPLOSW 2026</span><span class="badge badge--paper">IJCNN 2025</span></span>
+          
           <span class="card__title">Agent Based AI for Sustainable LLMs
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
@@ -388,9 +415,10 @@
               aria-label="Latency-Based Motion Detection in Spiking Neural Networks — open details">
         <span class="card__media js-img">
           <img src="images/projects/snn-motion-detection.webp" alt="Spiking neuron lattice showing a propagating motion wavefront" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--paper">Computational Vision 2024</span><span class="badge badge--paper">Best Presentation</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--paper">Computational Vision 2024</span><span class="badge badge--paper">Best Presentation</span></span>
+          
           <span class="card__title">Latency Based Motion Detection in Spiking Neural Networks
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
@@ -403,13 +431,14 @@
               aria-label="Mosquito Alert, AI for Environmental Surveillance — open details">
         <span class="card__media js-img">
           <img src="images/projects/mosquito-alert.webp" alt="Detection boxes over mosquito specimens in a monitoring trap" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--year">2023</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--year">2023</span></span>
+          
           <span class="card__title">Mosquito Alert: AI for Environmental Surveillance
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
-          <span class="card__blurb">Automated mosquito detection and species classification from rea -world smartphone images, designed to scale vector surveillance with computer vision.</span>
+          <span class="card__blurb">Automated mosquito detection and species classification from real world smartphone images, designed to scale vector surveillance with computer vision.</span>
           <span class="tags"><span>Object Detection</span><span>Fast R-CNN</span><span>Fine Grained Classification</span><span>Computer Vision</span></span>
         </span>
       </button>
@@ -418,9 +447,10 @@
               aria-label="Real-Time Customer Experience ML — open details">
         <span class="card__media js-img">
           <img src="images/projects/realtime-cx-ml.webp" alt="Streaming event pipeline feeding a personalization model" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--year">2020</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--year">2020</span></span>
+          
           <span class="card__title">Real Time Behavioral Intelligence &amp; Personalization
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
@@ -433,9 +463,10 @@
               aria-label="Breast Cancer Diagnosis via GA-Optimized MLP — open details">
         <span class="card__media js-img">
           <img src="images/projects/breast-cancer-mlp.webp" alt="Genetic-algorithm search over neural network configurations" loading="lazy" decoding="async" width="1440" height="900">
+          <span class="badges"><span class="badge badge--paper">Springer 2024</span></span>
         </span>
         <span class="card__body">
-          <span class="badges"><span class="badge badge--paper">Springer 2024</span></span>
+          
           <span class="card__title">Genetic Algorithm Optimized MLP for Breast Cancer Diagnosis
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </span>
@@ -608,8 +639,29 @@
   </a>
 </template>
 
+<section class="stack" aria-label="Presenting at the Hawai‘i Convention Center">
+  <!-- The pin is the whole mechanism. It sticks to the top of the viewport for
+       as long as this section has height left to scroll, and the sections after
+       it simply carry on up the page in normal flow and cover it. That is the
+       slide-over: no transform to drive, no scroll listener, no library. It is
+       tied to scroll progress by construction and reverses exactly. -->
+  <div class="stack__pin">
+    <video
+      class="stack__video"
+      poster="images/talk-poster.webp?v=65"
+      autoplay muted loop playsinline preload="metadata"
+      aria-hidden="true" tabindex="-1">
+      <source src="images/talk-loop.webm?v=65" type="video/webm">
+      <source src="images/talk-loop.mp4?v=65" type="video/mp4">
+    </video>
+    <!-- One flat translucent black layer, so the bright conference footage
+         sits at the same brightness as the page around it. -->
+    <span class="stack__scrim" aria-hidden="true"></span>
+  </div>
+</section>
+
 <!-- ═══ Publications ══════════════════════════════════════════════════════ -->
-<section class="section" id="publications" aria-labelledby="publications-title">
+<section class="section stack__panel" id="publications" aria-labelledby="publications-title">
   <div class="shell">
     <div class="section__head">
       <h2 class="section__title" id="publications-title">Publications</h2>
@@ -619,6 +671,7 @@
     <!-- Each href goes to the paper. Replace the Scholar link with a DOI when you have one. -->
     <ul class="pubs" data-stagger>
       <li class="reveal"><a class="pub" href="https://arxiv.org/abs/2603.23668" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Energy-Efficient Software–Hardware Co-Design for Machine Learning: From TinyML to LLMs</span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Yanqing Zhang</span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -627,6 +680,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://ieeexplore.ieee.org/abstract/document/11375459" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Forecasting and Visualizing Air Quality from Sky Images with Vision–Language Models</span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Maryam Eyvazi, Yanqing Zhang</span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -635,6 +689,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://ieeexplore.ieee.org/abstract/document/11228495" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">The Energy-Efficient Hierarchical Neural Network with Fast FPGA-Based Incremental Learning</span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Huaiyuan Chu, Yanqing Zhang</span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -643,6 +698,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://link.springer.com/article/10.1007/s41939-024-00487-3" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Enhancing Breast Cancer Diagnosis via Genetic-Algorithm-Optimized MLP</span>
         <span class="pub__authors">Hossein Talebzadeh, Mohammad Talebzadeh, Maryam Satarpour, Fereshtehsadat Jalali, Bahar Farhadi, <b>Mohammad Saleh Vahdatpour</b></span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -651,6 +707,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://publications.waset.org/10013561/latency-based-motion-detection-in-spiking-neural-networks" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Latency-Based Motion Detection in Spiking Neural Networks<span class="pub__award">Best Presentation</span></span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Yanqing Zhang</span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -659,6 +716,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://ui.adsabs.harvard.edu/abs/2024arXiv240103324S/abstract" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Addressing the Knapsack Challenge Through Cultural Algorithm Optimization</span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b></span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -667,6 +725,7 @@
       </a></li>
 
       <li class="reveal"><a class="pub" href="https://link.springer.com/article/10.1007/s12145-018-0334-x" target="_blank" rel="noopener">
+        <span class="pub__kind" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 12.5h7M9 16h7M9 9h3"/></svg></span>
         <span class="pub__title">Air Pollution Forecasting from Sky Images with Shallow and Deep Classifiers</span>
         <span class="pub__authors"><b>Mohammad Saleh Vahdatpour</b>, Hedieh Sajedi, Farzad Ramezani</span>
           <span class="pub__leader" aria-hidden="true"></span>
@@ -685,89 +744,79 @@
   </div>
 </section>
 
+<!-- ═══ Reel ═══════════════════════════════════════════════ -->
+
 <!-- ═══ About ═════════════════════════════════════════════════════════════ -->
-<section class="section" id="about" aria-labelledby="about-title">
+<section class="section stack__panel" id="about" aria-labelledby="about-title">
   <div class="shell">
     <div class="section__head">
       <h2 class="section__title" id="about-title">About</h2>
     </div>
 
     <div class="about">
-      <div class="about__grid">
-        <div class="about__prose reveal">
-          <p><strong>My journey into AI started with a PC, a curious six-year-old, and a lot of questions.</strong></p>
-          <p>That curiosity took me from programming and <strong>algorithms</strong> to <strong>AI, machine learning, computer vision, and LLMs</strong>. Along the way, I’ve worked on everything from predicting air quality from sky images to making AI systems more <strong>efficient and scalable</strong>.</p>
-          <p>Today, I’m an <strong>AI/ML Engineer &amp; Researcher</strong> driven by the same question that started it all: <strong>How can we make technology work better?</strong></p>
-          
-          <div class="mt-2">
-            <button type="button" class="btn btn--inline js-toggle-story" aria-expanded="false" aria-controls="about-story">
-              <span class="btn__text">See More →</span>
-            </button>
-          </div>
+      <div class="about__flow">
 
-          <div id="about-story" class="about__expanded" hidden>
-            <div class="story">
-              <p>I was six when I started sitting beside my brother while he configured PCs. I barely understood what he was doing, but I was fascinated by the idea that a machine could be taken apart, rebuilt, and made to do things you imagined.</p>
-              <p>By the end of elementary school, I was programming in Pascal and learning about <strong>algorithms and flowcharts</strong>. In high school, I moved to C++, and I quickly discovered that I loved solving problems, especially the kind that don’t have an obvious answer.</p>
-              <p>That mindset eventually took me to the <strong>Computer Olympiad</strong>, where I represented my province. I enjoyed the challenge of sitting with a difficult problem until I could finally break it down.</p>
-              <p>At university, I studied <strong>Computer Science</strong> and became interested in <strong>AI, machine learning, and algorithms</strong>. My interest in genetic algorithms led me to develop an approach that combined them with a belief space to improve their performance.</p>
-              <p>During my master’s, I explored <strong>NLP, computer vision, and neuroscience</strong>. I worked on a vision model inspired by the human visual system for online signature recognition, and later began a long-term project on <strong>air-quality prediction from sky images</strong> using image processing and neural networks.</p>
-              <p>That project taught me something I still value in research: sometimes the interesting problems are the ones where the answer isn’t directly visible. With air pollution, we had to learn from subtle visual effects while accounting for many other environmental factors.</p>
-              <p>My research eventually led to being ranked <strong>first in Computer Science and across the School of Science</strong>.</p>
-              <p>During my PhD, I returned to a question that had been following me since those early days: <strong>efficiency</strong>. This time, I was looking at it through the lens of <strong>LLMs and AI systems</strong>. My work focuses on <strong>software-hardware co-design</strong> to make AI more <strong>energy-efficient and scalable</strong>.</p>
-              <p><strong> technology has changed dramatically since I was six. My curiosity hasn’t.</strong></p>
-              <p>Outside of research, I’m usually looking for something new traveling, trying unfamiliar food, or exploring anything that catches my attention.</p>
-              <p>At the end of the day, I’m still driven by the same instinct:</p>
-              <p class="story__beat"><strong>If I don’t understand how something works, I want to figure it out.</strong></p>
+        <p class="about__deck">My journey into AI started with a PC, a curious six year old, and a lot of questions.</p>
 
-              <div class="story__close-wrap mt-2">
-                <button type="button" class="btn js-close-story">
-                  <span class="btn__text">See Less ←</span>
-                </button>
+        <figure class="fig fig--lead">
+          <img src="images/about-1-wide.webp" alt="Moe Vahdatpour" loading="lazy" decoding="async" width="1274" height="716">
+        </figure>
+
+        <p>That curiosity took me from programming and algorithms to AI, machine learning, computer vision, and LLMs. Along the way, I’ve worked on everything from predicting air quality from sky images to making AI systems more efficient and scalable.</p>
+        <p class="about__close">Today, I’m an AI/ML Engineer &amp; Researcher driven by the same question that started it all: how can we make technology work better?</p>
+
+        <div class="about__more-wrap">
+          <button type="button" class="btn btn--inline js-toggle-story" aria-expanded="false" aria-controls="about-story">
+            <span class="btn__text">See More →</span>
+          </button>
+        </div>
+
+        <div id="about-story" class="about__expanded" hidden>
+          <div class="story">
+            <p>I was six, sitting beside my brother while he configured PCs. I didn’t understand what he was doing, but I was fascinated that a machine could be taken apart, rebuilt, and made to do things you imagined.</p>
+
+            <h3 class="story__h">My first steps were small: Pascal, algorithms, and learning how to think in systems.</h3>
+            <p>By the end of elementary school I was programming in Pascal and learning algorithms and flowcharts. In high school I moved to C++ and realized I enjoyed breaking problems down more than writing code. That mindset led me to the Computer Olympiad, where I represented my province.</p>
+
+            <h3 class="story__h">From solving problems to understanding how intelligent systems could solve them.</h3>
+            <p>At university I studied Computer Science and turned toward AI, machine learning, and algorithms, pairing genetic algorithms with a belief space. My master’s added NLP, computer vision, and neuroscience: a vision model based on the human visual system for signature recognition, and a project predicting air quality from sky images.</p>
+              <div class="figs" role="group" aria-label="University years">
+                <figure class="fig" style="--ar: 1.506"><img src="images/story/end-8.webp" alt="Moe Vahdatpour during his university years" loading="lazy" decoding="async" width="1500" height="996"></figure>
+                <figure class="fig" style="--ar: 0.745"><img src="images/story/end-7-crop.webp" alt="Moe Vahdatpour at his graduation" loading="lazy" decoding="async" width="834" height="1120"></figure>
               </div>
+
+            <h3 class="story__h">As the problems became bigger, efficiency became part of the question.</h3>
+            <p>During my PhD I started looking past what AI systems could achieve toward how efficiently they could achieve it, moving into LLMs and software-hardware co-design. A model isn’t useful just because it’s capable. It has to be practical to run, scale, and deploy.</p>
+              <div class="figs" role="group" aria-label="Research and conferences">
+                <figure class="fig" style="--ar: 1.237"><img src="images/story/end-9-crop.webp" alt="Moe Vahdatpour presenting his research" loading="lazy" decoding="async" width="767" height="620"></figure>
+                <figure class="fig" style="--ar: 0.955"><img src="images/story/end-10.webp" alt="Moe Vahdatpour presenting his research" loading="lazy" decoding="async" width="638" height="668"></figure>
+              </div>
+
+            <h3 class="story__h">The tools have changed, but the way I approach problems hasn’t.</h3>
+            <p>Today I work across computer vision, multimodal AI, LLMs, and efficient computing, still following the path that started with learning how a computer works: understand the problem, and keep asking what could be better.</p>
+
+            <h3 class="story__h">Outside of research and work, the same curiosity just points somewhere else.</h3>
+            <p>I’m usually looking for something new. Traveling, unfamiliar food, whatever catches my attention. It starts the same way work does: I find something I don’t know yet, and I want to know how it works.</p>
+              <div class="figs" role="group" aria-label="Outside of work">
+                <figure class="fig" style="--ar: 0.750"><img src="images/story/end-1.webp" alt="Moe Vahdatpour travelling" loading="lazy" decoding="async" width="1125" height="1500"></figure>
+                <figure class="fig" style="--ar: 0.750"><img src="images/story/end-3.webp" alt="Moe Vahdatpour travelling" loading="lazy" decoding="async" width="1125" height="1500"></figure>
+                <figure class="fig" style="--ar: 0.750"><img src="images/story/end-12-full.webp" alt="Moe Vahdatpour travelling" loading="lazy" decoding="async" width="960" height="1280"></figure>
+                <figure class="fig" style="--ar: 0.751"><img src="images/story/end-13-crop.webp" alt="Moe Vahdatpour travelling" loading="lazy" decoding="async" width="736" height="980"></figure>
+              </div>
+
+            <p class="story__beat">I work on LLMs and the systems they run on, where efficiency is part of the problem, not an afterthought.</p>
+
+            <div class="about__more-wrap">
+              <button type="button" class="btn js-close-story">
+                <span class="btn__text">See Less ←</span>
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="about__photos reveal">
-          <figure class="photo photo--tall js-img">
-            <img src="images/about-1.webp" alt="Moe Vahdatpour" loading="lazy" decoding="async">
-          </figure>
-
-          <div class="about__extra-photos">
-            <figure class="js-img"><img src="images/story/end-1.webp" alt="Photo 1" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-2.webp" alt="Photo 2" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-3.webp" alt="Photo 3" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-4.webp" alt="Photo 4" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-5.webp" alt="Photo 5" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-6.webp" alt="Photo 6" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-7.webp" alt="Photo 5" loading="lazy" decoding="async"></figure>
-            <figure class="js-img"><img src="images/story/end-8.webp" alt="Photo 6" loading="lazy" decoding="async"></figure>
-          
-          </div>
-        </div>
-      </div>
-
-      <div class="about__facts">
-        <div class="fact">
-          <div class="fact__n">+8</div>
-          <div class="fact__l mono">years in ML</div>
-        </div>
-        <div class="fact">
-          <div class="fact__n">7</div>
-          <div class="fact__l mono">peer-reviewed papers</div>
-        </div>
-        <div class="fact">
-          <div class="fact__n">+16</div>
-          <div class="fact__l mono">papers reviewed</div>
-        </div>
-        <div class="fact">
-          <div class="fact__n">+90</div>
-          <div class="fact__l mono">teammates worked with</div>
-        </div>
       </div>
     </div>
-  </div>
+    </div>
 </section>
 
 </main>
@@ -775,7 +824,7 @@
 
 
 <!-- ═══ Footer ════════════════════════════════════════════════════════════ -->
-<footer class="footer">
+<footer class="footer stack__panel">
   <div class="shell">
     <div class="footer__top">
       <div class="footer__pitch">
@@ -857,6 +906,6 @@
 }
 </script>
 
-<script src="js/main.js?v=19"></script>
+<script src="js/main.js?v=65"></script>
 </body>
 </html>

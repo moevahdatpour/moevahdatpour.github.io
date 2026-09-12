@@ -225,6 +225,50 @@
     reduced ? done() : setTimeout(done, 200);
   }
 
+  // The reel is decoration, so it should not move for a reader who has asked
+  // the system for less motion. Autoplay has usually already started by the
+  // time this runs, hence pause() rather than stripping the attribute.
+  // The slide-over itself is pure CSS — sticky pin plus normal document flow.
+  // This only does the two things CSS cannot: stack the panels in DOM order,
+  // and keep the video from decoding while nobody can see it.
+  function initStack() {
+    var panels = document.querySelectorAll('.stack__panel');
+    for (var i = 0; i < panels.length; i++) {
+      // 2 upward, so every panel sits above the pinned video (z-index 1) and
+      // above the panel before it. Set once at init — never touched on scroll.
+      panels[i].style.zIndex = String(i + 2);
+    }
+
+    var pin = $('.stack__pin');
+    var video = $('.stack__video');
+    if (!pin || !video) return;
+
+    // A looping video is moving content, so a reader who asked for less motion
+    // gets the poster frame instead.
+    if (reduced) { video.pause(); return; }
+
+    // Autoplay can be refused (battery saver, low power mode); the poster stays
+    // up in that case, which is a fine resting state.
+    var attempt = video.play();
+    if (attempt && attempt.catch) attempt.catch(function () {});
+
+    if (!('IntersectionObserver' in window)) return;
+
+    // Decoding frames behind an opaque panel is wasted battery. Pausing off
+    // screen is invisible — the loop is ambient, not something to keep time
+    // with — and costs nothing when it scrolls back into view.
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0 }).observe(pin);
+  }
+
   function initModal() {
     modal = $('#modal');
     if (!modal || !modal.showModal) return;
@@ -290,7 +334,7 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       GAP = w < 700 ? 42 : 34;
-      REACH = Math.max(420, Math.hypot(w, h) * 0.8);
+      REACH = Math.max(340, Math.hypot(w, h) * 0.46);
       nodes = [];
       var cols = Math.ceil(w / GAP) + 1;
       var rows = Math.ceil(h / GAP) + 1;
@@ -331,13 +375,33 @@
           var d = Math.sqrt(dx * dx + dy * dy);
           var age = (now - sp.t) - d / SPEED;      // latency ∝ distance
           if (age < 0 || age > DECAY) continue;
-          var lit = Math.exp(-age / (DECAY * 0.38)) * sp.s * Math.max(0, 1 - d / REACH);
+          // Squared distance falloff: the front fades out on its own rather
+          // than carrying at full strength until it runs out of canvas.
+          var fall = 1 - d / REACH;
+          fall = fall > 0 ? fall * fall : 0;
+          var lit = Math.exp(-age / (DECAY * 0.38)) * sp.s * fall;
           if (lit > best) best = lit;
         }
-        if (best <= 0.04) continue;            // trim the faintest of the tail
+        if (best <= 0.03) continue;            // trim the faintest of the tail
+
+        // A soft halo under the brightest part of the wavefront. Only the
+        // nodes actually near the crest get one, so this stays a handful of
+        // extra arcs per frame rather than one behind every node.
+        if (best > 0.22) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 2.4 + best * 5, 0, 6.2832);
+          ctx.fillStyle = 'rgba(140, 123, 255, ' + (best * 0.09).toFixed(3) + ')';
+          ctx.fill();
+        }
+
+        // The core warms from iris toward white as it lights, so the crest
+        // reads as a distinct front instead of a uniformly purple smear.
+        var m = best > 1 ? 1 : best;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 1 + best * 1.6, 0, 6.2832);
-        ctx.fillStyle = 'rgba(140, 123, 255, ' + Math.min(best * 0.68, 0.58).toFixed(3) + ')';
+        ctx.arc(node.x, node.y, 1 + best * 1.9, 0, 6.2832);
+        ctx.fillStyle = 'rgba(' + (140 + 50 * m).toFixed(0) + ', '
+                                + (123 + 55 * m).toFixed(0) + ', 255, '
+                                + Math.min(best * 0.88, 0.7).toFixed(3) + ')';
         ctx.fill();
       }
     }
@@ -346,7 +410,7 @@
       if (!running) return;
       if (now - lastEmit > 3000) {          // idle pulse, from wherever the cursor is
         lastEmit = now;
-        emit(srcX, srcY, 0.65);
+        emit(srcX, srcY, 0.72);
       }
       spikes = spikes.filter(function (sp) { return now - sp.t < REACH / SPEED + DECAY; });
       draw(now);
@@ -388,7 +452,7 @@
       lastEmit = now;
       emitX = srcX;
       emitY = srcY;
-      emit(srcX, srcY, 0.62);
+      emit(srcX, srcY, 0.7);
     }, { passive: true });
 
     var rz;
@@ -464,6 +528,7 @@
     initNav();
     initFilters();
     initModal();
+    initStack();
     initAboutToggle();
     initReveal();
     initField();
