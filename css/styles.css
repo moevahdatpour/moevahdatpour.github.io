@@ -1075,7 +1075,7 @@ button {
 .footer__top {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: stretch;
   justify-content: space-between;
   gap: var(--s-6);
 }
@@ -2226,25 +2226,16 @@ a.r-cred:active { transform: translateY(1px); background: var(--raised); }
   background: var(--surface);
 }
 
-/* The pictures sit slightly off-square so a row does not read as a table, but
-   they share a bottom line: rotating from `bottom center` keeps the base of
-   every picture on the same level and lets only the tops splay. The previous
-   version also nudged each one up or down a few pixels, and that vertical
-   stagger is what made the row look misaligned rather than casual — the eye
-   reads a broken baseline as a mistake, and a fanned top edge as deliberate.
-   Angles stay under a degree. */
+/* Square-on and aligned. The tilt was there to keep the rows from reading as a
+   table, but at any angle small enough to look tasteful it just read as
+   misalignment. The rows hold their shape instead: equal heights, one baseline,
+   even gaps, no rotation. */
 .figs > .fig {
-  transform-origin: bottom center;
   transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
 }
 
-.figs > .fig:nth-child(1) { transform: rotate(-0.8deg); }
-.figs > .fig:nth-child(2) { transform: rotate(0.45deg); }
-.figs > .fig:nth-child(3) { transform: rotate(-0.35deg); }
-.figs > .fig:nth-child(4) { transform: rotate(0.7deg); }
-
 .figs > .fig:hover {
-  transform: rotate(0deg) scale(1.03);
+  transform: scale(1.03);
   z-index: 2;
   box-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.85);
 }
